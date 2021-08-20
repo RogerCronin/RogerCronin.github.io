@@ -20,6 +20,15 @@ TODO:
 
 <body>
 
+	<div id="blanketDiv">
+		<div id="gameInfoDiv">
+			<h3 id="gameInfoTitle">Sicko Mode</h3>
+			<p id="gameInfoParagraph">This classic hit by Travis Scott is finally on SquareBrackets!</p>
+			<button id="launchButton">LAUNCH</button>
+			<button id="backButton" onclick="goBack()">GO BACK</button>
+		</div>
+	</div>
+
 	<div id="headerDiv">
 		<h1 id="headerTitle"><span>[</span> SquareBrackets <span>]</span></h1 id="headerTitle">
 	</div>
@@ -27,39 +36,53 @@ TODO:
 	<div id="gamesDivWrapper">
 	<div id="gamesDiv">
 
-		<div class="game" onclick="clickGame(this)">
+		<div class="gameWrapper">
+		<div class="game" onclick="clickGame('jsm')">
 			<div>jsm</div>
 			<img src="assets/jsm.png">
 		</div>
+		</div>
 
-		<div class="game" onclick="clickGame(this)">
+		<div class="gameWrapper">
+		<div class="game" onclick="clickGame('gnome')">
 			<div>gnome</div>
 			<img src="assets/gnomeFighter.png">
 		</div>
+		</div>
 
-		<div class="game" onclick="clickGame(this)">
+		<div class="gameWrapper">
+		<div class="game" onclick="clickGame('tetris')">
 			<div>tetris</div>
 			<img src="assets/twitchTetris.png">
 		</div>
+		</div>
 
-		<div class="game" onclick="clickGame(this)">
+		<div class="gameWrapper">
+		<div class="game" onclick="clickGame('roulette')">
 			<div>roulette</div>
 			<img src="assets/russianRoulette.png">
 		</div>
+		</div>
 
-		<div class="game" onclick="clickGame(this)">
+		<div class="gameWrapper">
+		<div class="game" onclick="clickGame('crab web')">
 			<div>crab web</div>
 			<img src="assets/crabSimulatorWeb.png">
 		</div>
-
-		<div class="game" onclick="clickGame(this)">
-			<div>crab dl</div>
-			<img src="assets/crabSimulatorPy.png">
 		</div>
 
-		<div class="game" onclick="clickGame(this)">
+		<div class="gameWrapper">
+		<div class="game" onclick="clickGame('crab py')">
+			<div>crab py</div>
+			<img src="assets/crabSimulatorPy.png">
+		</div>
+		</div>
+
+		<div class="gameWrapper">
+		<div class="game" onclick="clickGame('crab tsa')">
 			<div>crab tsa</div>
 			<img src="assets/crabSimulatorTSA.png">
+		</div>
 		</div>
 
 	</div>
@@ -67,14 +90,14 @@ TODO:
 
 	<div id="infoDiv">
 		<h2>Welcome to SquareBrackets!</h2>
-		<h3>Recently added</h2>
+		<h3>Recently added</h3>
 		<ul>
 			<li>Website rebrand! Formerly known as mixedlaughs.tk
 			<li>All new landing page
 			<li>All new domain name
 			<li>The whole nine yards
 		</ul>
-		<h3>Todo</h2>
+		<h3>Todo</h3>
 		<ul>
 			<li>Update controls screen for Twitch Tetris
 			<li>Finish Crab Simulator 2 (yes it exists)
@@ -96,45 +119,101 @@ TODO:
 
 <script>
 
-const width = screen.width
-const height = screen.height
+const id = iden => document.getElementById(iden)
 
-function onLoad() {
-	window.addEventListener("resize", () => {
-		width = screen.width
-		height = screen.height
-	})
+function updateGameInfo(title, paragraph, link, button = "LAUNCH") {
+	id("gameInfoTitle").innerHTML = title
+	id("gameInfoParagraph").innerHTML = paragraph
+	id("launchButton").onclick = () => location.href = `/${link}`
+	id("launchButton").innerHTML = button
 }
 
 function clickGame(game) {
-	console.log(game.top)
-	if(game.active) {
-		game.active = false
-		game.style.left = "0px"
-		game.style.top = "0px"
-		console.log(game.left)
-		console.log(1)
-	} else {
-		let rect = game.getBoundingClientRect()
-		let distance = calcDistanceToMiddle((rect.left + rect.right) / 2, (rect.top + rect.bottom) / 2)
-		console.log(distance)
 
-		game.style.left = `${distance[0]}px`
-		game.style.top = `${distance[1]}px`
-
-		/*
-		let sideMid = (rect.left + rect.right) / 2
-		let frontMid = (rect.top + rect.bottom) / 2
-		*/
-
-		game.active = true
+	switch(game) {
+		case "jsm":
+			updateGameInfo(
+				"JavaScript Message v4.0",
+				"The fourth iteration of JavaScript Message, a social platform intended for in-school use.",
+				"javascriptmessage"
+			)
+			break
+		case "gnome":
+			updateGameInfo(
+				"Gnome Fighter",
+				"A riveting button-mashing fighting game staring Gnome and Anti-Gnome. Originally for Android.",
+				"gnomefighter/classic"
+			)
+			break
+		case "tetris":
+			updateGameInfo(
+				"TwitchTetris v2.1",
+				"TwitchTetris, ported to SquareBrackets with a few quality-of-life improvements. Not affiliated with Twitch.",
+				"twitchtetris"
+			)
+			break
+		case "roulette":
+			updateGameInfo(
+				"Russian Roulette",
+				"The classic party game you know and love, but the \"bullet\" is hearing loss. Earbuds required!",
+				"russianroulette"
+			)
+			break
+		case "crab web":
+			updateGameInfo(
+				"Crab Simulator v1.4 (web)",
+				"Crab Simulator, ported to the internet for easy access.",
+				"crabsimulator/CrabSimulator1.4"
+			)
+			break
+		case "crab py":
+			updateGameInfo(
+				"Crab Simulator v1.3 (download)",
+				"A download link for Crab Simulator, originally developed on Python 3, then ported to Windows devices.",
+				"crabsimulator/CrabSimulator1.3.zip",
+				"DOWNLOAD"
+			)
+			break
+		case "crab tsa":
+			updateGameInfo(
+				"Crab Simulator TSA",
+				"A PG, adventure spinoff of Crab Simulator made for a national competition.",
+				"crabsimulator/CrabSimulatorTSA"
+			)
+			break
 	}
 
+	id("blanketDiv").classList.add("active")
+	id("blanketDiv").style.zIndex = 1
 }
 
-function calcDistanceToMiddle(x, y) {
-	return [width - x, height - y]
+function goBack() {
+	id("blanketDiv").classList.remove("active")
+	setTimeout(() => id("blanketDiv").style.zIndex = -1, 500) // move to back after css transition
 }
+
+
+/*
+function clickGame(game) {
+	if(game.active) {
+
+		game.active = false
+
+		game.style.left = ""
+		game.style.top = ""
+
+	} else {
+
+		game.active = true
+		let rect = game.getBoundingClientRect()
+
+		game.style.left = `${(screen.width / 2 - rect.width / 2 - rect.left)}px`
+		game.style.top = `${(screen.height / 2 - rect.height / 2 - rect.top)}px`
+
+ }
+
+}
+*/
 
 </script>
 

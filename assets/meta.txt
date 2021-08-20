@@ -5,5 +5,6 @@ Rich Black FORGA 29 #061826
 Honolulu Blue #0471A6
 Dark Byzantium #522B47
 Platinum #E8E8E8
-Shiny Shamrock #4C9F70
+Green #386641
 Light Gray #CDCDCD
+Red #DF2935
