@@ -35,6 +35,7 @@ p, li, a {
 
 a:link {
   text-decoration: none;
+	color: var(--white);
 }
 
 a:visited {
@@ -48,6 +49,7 @@ a:hover {
 
 a:active {
   text-decoration: underline;
+	color: var(--blue);
 }
 
 body {
