@@ -1,30 +1,141 @@
+<!--
+
+TODO:
+- when click, set position to sticky
+- change from window coords to screen cords
+- animate change from pos to center of screen
+
+-->
+
 <!DOCTYPE html>
 <html>
 
 <head>
-	<title>SquareBrackets</title>
+	<title>[ SquareBrackets ]</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
 	<link rel="stylesheet" href="style.css">
 	<link rel="shortcut icon" type="image/png" href="/assets/favicon.png">
 </head>
 
 <body>
+
 	<div id="headerDiv">
 		<h1 id="headerTitle"><span>[</span> SquareBrackets <span>]</span></h1 id="headerTitle">
 	</div>
-	<div id="gamesDiv" onclick="clickGame('test')">
-		<div class="game">
-			<div>crab sim</div>
+
+	<div id="gamesDivWrapper">
+	<div id="gamesDiv">
+
+		<div class="game" onclick="clickGame(this)">
+			<div>jsm</div>
 			<img src="assets/jsm.png">
 		</div>
-	</div id="game">
+
+		<div class="game" onclick="clickGame(this)">
+			<div>gnome</div>
+			<img src="assets/gnomeFighter.png">
+		</div>
+
+		<div class="game" onclick="clickGame(this)">
+			<div>tetris</div>
+			<img src="assets/twitchTetris.png">
+		</div>
+
+		<div class="game" onclick="clickGame(this)">
+			<div>roulette</div>
+			<img src="assets/russianRoulette.png">
+		</div>
+
+		<div class="game" onclick="clickGame(this)">
+			<div>crab web</div>
+			<img src="assets/crabSimulatorWeb.png">
+		</div>
+
+		<div class="game" onclick="clickGame(this)">
+			<div>crab dl</div>
+			<img src="assets/crabSimulatorPy.png">
+		</div>
+
+		<div class="game" onclick="clickGame(this)">
+			<div>crab tsa</div>
+			<img src="assets/crabSimulatorTSA.png">
+		</div>
+
+	</div>
+	</div>
+
+	<div id="infoDiv">
+		<h2>Welcome to SquareBrackets!</h2>
+		<h3>Recently added</h2>
+		<ul>
+			<li>Website rebrand! Formerly known as mixedlaughs.tk
+			<li>All new landing page
+			<li>All new domain name
+			<li>The whole nine yards
+		</ul>
+		<h3>Todo</h2>
+		<ul>
+			<li>Update controls screen for Twitch Tetris
+			<li>Finish Crab Simulator 2 (yes it exists)
+			<li>Remake Gnome Fighter
+			<li>Start work on Super Gnome Fighter?
+		</ul>
+	</div>
+
+	<div id="footerDiv">
+
+		<p class="socialRow"><img src="/assets/twitter.png"><a href="https://twitter.com/brackets_square" target="_blank">@brackets_square</a></p>
+		<p class="socialRow"><img src="/assets/github.png"><a href="https://github.com/RogerCronin" target="_blank">RogerCronin</a></p>
+		<p class="socialRow"><img src="/assets/discord.png"><span>Roger#4803</span></p>
+
+	</div>
+
+
 </body>
 
 <script>
-	function clickGame(name) {
-		alert(name)
+
+const width = screen.width
+const height = screen.height
+
+function onLoad() {
+	window.addEventListener("resize", () => {
+		width = screen.width
+		height = screen.height
+	})
+}
+
+function clickGame(game) {
+	console.log(game.top)
+	if(game.active) {
+		game.active = false
+		game.style.left = "0px"
+		game.style.top = "0px"
+		console.log(game.left)
+		console.log(1)
+	} else {
+		let rect = game.getBoundingClientRect()
+		let distance = calcDistanceToMiddle((rect.left + rect.right) / 2, (rect.top + rect.bottom) / 2)
+		console.log(distance)
+
+		game.style.left = `${distance[0]}px`
+		game.style.top = `${distance[1]}px`
+
+		/*
+		let sideMid = (rect.left + rect.right) / 2
+		let frontMid = (rect.top + rect.bottom) / 2
+		*/
+
+		game.active = true
 	}
+
+}
+
+function calcDistanceToMiddle(x, y) {
+	return [width - x, height - y]
+}
+
 </script>
 
 </html>

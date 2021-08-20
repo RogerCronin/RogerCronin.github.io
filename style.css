@@ -11,13 +11,25 @@
 	--gray: #CDCDCD;
 }
 
-h1, h2 {
+h1, h2, h3 {
   font-family: "Roboto", sans-serif;
   font-weight: normal;
 }
 
+h2 {
+	text-align: center;
+	font-size: 2em;
+}
+
+h3 {
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+}
+
 p, li, a {
   font-family: "Open Sans", sans-serif;
+	font-size: 1.25em;
 }
 
 a:link {
@@ -26,6 +38,7 @@ a:link {
 
 a:visited {
   text-decoration: none;
+	color: var(--white);
 }
 
 a:hover {
@@ -51,10 +64,10 @@ body {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	height: 6em;
+	height: 6.1em;
 	background-color: var(--black);
 	color: var(--white);
-	font-size: 2em;
+	font-size: max(1.8vw, 110%); /* black magic that fixes phone text size too big */
 }
 
 #headerDiv span {
@@ -62,26 +75,69 @@ body {
 	color: var(--blue);
 }
 
-#gamesDiv {
+#infoDiv {
+	padding: 0 1.5em 2em 2em;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#footerDiv {
+	width: 100%;
+	background-color: var(--black);
+	color: var(--white);
 	display: flex;
 	justify-content: center;
-	background-color: var(--blue);
-	padding: 2em;
-	width: 100%;
+	flex-wrap: wrap;
+}
+
+.socialRow a, .socialRow span {
+	font-size: 0.8em;
+	display: inline;
 	position: relative;
+	bottom: 0.8em;
+	left: 0.5em;
+	margin-right: 1em;
+}
+
+.socialRow {
+	padding: 0 1em;
+}
+
+#infoDiv ul {
+	margin: 0 auto;
+	width: fit-content;
+}
+
+#gamesDivWrapper {
+	width: 100%;
+	background-color: var(--blue);
+}
+
+#gamesDiv {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: center;
+	padding: 2em;
+	position: relative;
+	margin: 0 20vh;
 }
 
 .game {
 	position: relative;
 	top: 0;
-	transition: top ease 0.25s, box-shadow ease 0.25s;
+	transition: top ease 0.25s, left ease 0.25s, box-shadow ease 0.25s;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	height: 300px;
 	width: 240px;
+	min-width: 240px;
 	background-color: var(--black);
 	border-radius: 1em;
+	margin: 1em;
 }
 
 .game:hover {
