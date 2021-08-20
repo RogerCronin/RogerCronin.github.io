@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+h1, h2 {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+}
+
+p, li, a {
+  font-family: "Open Sans", sans-serif;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+#header {
+	background-color: #061826;
+}
+
+/* info bar */
+#leftBarDiv {
+  margin: 3em 3em 0em 3em;
+  min-width: 10em;
+  max-width: 40em;
+}
+
+/* apps list */
+#rightBarDiv {
+  margin: 3em;
+  min-width: 10em;
+  max-width: 55em;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+#recentlyUpdatedDiv {
+	margin: 0em 0em 1.9em 0em;
+}
+
+#socialsDiv {
+	margin-top: 1em;
+}
+
+/* box containing app */
+.linkBox {
+  padding: 1em;
+  background-color: lightgray;
+  border-radius: 1em;
+  min-width: 10em;
+  max-width: 30em;
+  cursor: pointer;
+  margin-bottom: 1em;
+  transition: 0.3s;
+	height: 5em;
+  overflow-y: hidden;
+  overflow-wrap: break-word;
+  user-select: none;
+}
+
+.linkBox:hover {
+  box-shadow: 0 0.25em 0.25em rgb(0, 0, 0, 0.6);
+}
+
+.linkBoxExtended {
+
+}
+
+.linkBoxMain {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-y: hidden;
+}
+
+/* app icon */
+.linkBox img {
+  margin-right: 1em;
+  width: 5em;
+  height: 5em;
+  border-radius: 1em;
+}
+
+/* app title and description div */
+.linkBox div {
+  width: 30em;
+}
+
+/* app title */
+.linkBoxMain div p:first-child {
+  margin: 0em 0em 0.5em 0em;
+  font-weight: bold;
+}
+
+/* app description */
+.linkBoxMain div p:nth-child(2) {
+  margin: 0em;
+}
+
+.linkBoxSubitem {
+  padding: 1em;
+  background-color: gray;
+  border-radius: 1em;
+}
+
+.socialRow a, .socialRow p {
+	display: inline;
+	position: relative;
+	bottom: 0.5em;
+	left: 0.5em;
+}

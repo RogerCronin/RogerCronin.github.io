@@ -1,5 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap');
+
+:root {
+	--black: #061826;
+	--blue: #0471A6;
+	--purple: #522B47;
+	--white: #E8E8E8;
+	--green: #4C9F70;
+	--gray: #CDCDCD;
+}
 
 h1, h2 {
   font-family: "Roboto", sans-serif;
@@ -29,101 +39,75 @@ a:active {
 body {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+	margin: 0em;
 }
 
 *::-webkit-scrollbar {
   display: none;
 }
 
-/* info bar */
-#leftBarDiv {
-  margin: 3em 3em 0em 3em;
-  min-width: 10em;
-  max-width: 40em;
+#headerDiv {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 6em;
+	background-color: var(--black);
+	color: var(--white);
+	font-size: 2em;
 }
 
-/* apps list */
-#rightBarDiv {
-  margin: 3em;
-  min-width: 10em;
-  max-width: 55em;
-  overflow-y: scroll;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+#headerDiv span {
+	font-weight: bold;
+	color: var(--blue);
 }
 
-#recentlyUpdatedDiv {
-	margin: 0em 0em 1.9em 0em;
-}
-
-#socialsDiv {
-	margin-top: 1em;
-}
-
-/* box containing app */
-.linkBox {
-  padding: 1em;
-  background-color: lightgray;
-  border-radius: 1em;
-  min-width: 10em;
-  max-width: 30em;
-  cursor: pointer;
-  margin-bottom: 1em;
-  transition: 0.3s;
-	height: 5em;
-  overflow-y: hidden;
-  overflow-wrap: break-word;
-  user-select: none;
-}
-
-.linkBox:hover {
-  box-shadow: 0 0.25em 0.25em rgb(0, 0, 0, 0.6);
-}
-
-.linkBoxExtended {
-
-}
-
-.linkBoxMain {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-y: hidden;
-}
-
-/* app icon */
-.linkBox img {
-  margin-right: 1em;
-  width: 5em;
-  height: 5em;
-  border-radius: 1em;
-}
-
-/* app title and description div */
-.linkBox div {
-  width: 30em;
-}
-
-/* app title */
-.linkBoxMain div p:first-child {
-  margin: 0em 0em 0.5em 0em;
-  font-weight: bold;
-}
-
-/* app description */
-.linkBoxMain div p:nth-child(2) {
-  margin: 0em;
-}
-
-.linkBoxSubitem {
-  padding: 1em;
-  background-color: gray;
-  border-radius: 1em;
-}
-
-.socialRow a, .socialRow p {
-	display: inline;
+#gamesDiv {
+	display: flex;
+	justify-content: center;
+	background-color: var(--blue);
+	padding: 2em;
+	width: 100%;
 	position: relative;
-	bottom: 0.5em;
-	left: 0.5em;
+}
+
+.game {
+	position: relative;
+	top: 0;
+	transition: top ease 0.25s, box-shadow ease 0.25s;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	height: 300px;
+	width: 240px;
+	background-color: var(--black);
+	border-radius: 1em;
+}
+
+.game:hover {
+	top: -10px;
+	box-shadow: 0 0.4em 0.4em rgb(0, 0, 0, 0.6);
+}
+
+.game div {
+	text-align: center;
+	margin: 0.9em auto;
+	padding-top: 0.15em;
+	width: 80%;
+	height: 1.5em;
+	border-radius: 0.25em;
+	background-color: var(--white);
+	font-family: "Atkinson Hyperlegible", sans-serif;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: var(--black);
+	font-size: 1.5em;
+}
+
+.game img {
+	margin: -.1em 1.2em auto auto;
+	width: 200px;
+	height: 200px;
+	border-radius: 1em;
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 85%);
 }

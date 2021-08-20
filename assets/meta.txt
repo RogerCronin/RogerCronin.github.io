@@ -1,0 +1,9 @@
+logo Franklin Gothic Medium size 16
+
+palette (https://coolors.co/4c9f70-e8e8e8-522b47-0471a6-061826)
+Rich Black FORGA 29 #061826
+Honolulu Blue #0471A6
+Dark Byzantium #522B47
+Platinum #E8E8E8
+Shiny Shamrock #4C9F70
+Light Gray #CDCDCD
