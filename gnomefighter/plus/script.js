@@ -327,8 +327,8 @@ function update() {
 // rewrite so it randomly picks between going towards other gnome and towards the center of the screen
 function jitterEntity(iden) {
 	if(gameState == 3) return
-	let x = entities[iden].x + (Math.random() * 30 - 15)
-	let y = entities[iden].y + (Math.random() * 30 - 15)
+	let x = entities[iden].x + (Math.random() * 31 - 15)
+	let y = entities[iden].y + (Math.random() * 31 - 15)
 	if(x < 0) x = 0
 	if(x > 1921 - entities[iden].w) x = 1921 - entities[iden].w
 	if(y < 0) y = 0
