@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Gnome Figher+</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+	<link rel="stylesheet" href="style.css">
+	<link rel="shortcut icon" type="image/png" href="./assets/favicon.png">
+	<script src="script.js"></script>
+</head>
+
+<body onload="onLoad()">
+	<div id="gameDiv">
+		<div id="titleScreenDiv">
+			<img id="titleImage" src="./assets/titleScreen.png">
+			<img id="startButton" onmouseover="buttonMouse('start', true)" onmouseout="buttonMouse('start', false)" onclick="startGame()" src="./assets/startButton.png">
+			<img id="backButton" onmouseover="buttonMouse('back', true)" onmouseout="buttonMouse('back', false)" onclick="if(gameState==0)location.href='/'" src="./assets/backButton.png">
+			<img id="helpButton" onmouseover="buttonMouse('help', true)" onmouseout="buttonMouse('help'), false" onclick="help()" src="./assets/helpButton.png">
+			<img id="help" src="./assets/help.png">
+			<img id="number1" class="number" src="./assets/1.png">
+			<img id="number2" class="number" src="./assets/2.png">
+			<img id="number3" class="number" src="./assets/3.png">
+			<img id="start" class="number" src="./assets/start.png">
+		</div>
+		<img id="gnome" onerror="gnomeError(this)" src="./assets/gnome.png">
+		<img id="antiGnome" onerror="gnomeError(this)" src="./assets/antiGnome.png">
+		<a href="../classic/">Gnome Fighter Classic</a>
+	</div>
+</body>
+
+</html>

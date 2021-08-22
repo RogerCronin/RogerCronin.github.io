@@ -1,0 +1,92 @@
+body {
+	display: flex;
+	justify-content: center;
+	margin: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: #7F7F7F;
+	overflow: hidden;
+	font-family: Tahoma, sans-serif;
+}
+
+#gameDiv {
+	background-color: #A9A9A9;
+	margin: auto;
+}
+
+#titleScreenDiv {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#titleScreenDiv > img:not(.number):not(#help) {
+	opacity: 0;
+	transition: opacity linear 1s;
+	z-index: 2;
+}
+
+#antiGnome {
+	transform: scaleX(-1);
+}
+
+.number {
+	opacity: 0;
+	z-index: 1;
+}
+
+img {
+	position: absolute;
+	user-drag: none;
+	-webkit-user-drag: none;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+p {
+	font-weight: bold;
+	opacity: 1;
+	transition: opacity linear 900ms;
+	font-size: 5vw;
+	color: red;
+	position: absolute;
+}
+
+a {
+	font-size: 1.5em;
+	position: relative;
+	color: darkgray;
+	z-index: 5;
+}
+
+a:link {
+  text-decoration: none;
+	color: darkgray;
+}
+
+a:visited {
+  text-decoration: none;
+	color: darkgray;
+}
+
+a:hover {
+	color: gray;
+	text-decoration: none;
+}
+
+#help {
+	opacity: 0;
+	transition: opacity linear 1s;
+	z-index: 1;
+}
+
+.explosion {
+	position: absolute;
+	width: 160px;
+	height: 160px;
+	background-image: url("./assets/explosion.png");
+	background-repeat: no-repeat;
+}
