@@ -165,10 +165,14 @@ document.addEventListener("click", e => {
 })
 
 function skinChange(num) {
-	num = num ? 0 : 1
-	skinArray[num]++
-	if(skinArray[num] >= skins.length) skinArray[num] = 0
-	id(num ? "antiGnome" : "gnome").src = `./assets/${skins[skinArray[num]]}.png`
+	if(gameState == 0) {
+		num = num ? 0 : 1
+		skinArray[num]++
+		if(skinArray[num] >= skins.length) skinArray[num] = 0
+		id(num ? "antiGnome" : "gnome").src = `./assets/${skins[skinArray[num]]}.png`
+	} else if(gameState == 2) {
+		num ? gnomeAttack() : antiGnomeAttack()
+	}
 }
 
 function gnomeError(element) {
@@ -327,8 +331,8 @@ function update() {
 // rewrite so it randomly picks between going towards other gnome and towards the center of the screen
 function jitterEntity(iden) {
 	if(gameState == 3) return
-	let x = entities[iden].x + (Math.random() * 31 - 15)
-	let y = entities[iden].y + (Math.random() * 31 - 15)
+	let x = entities[iden].x + (Math.random() * 31 - 15.5)
+	let y = entities[iden].y + (Math.random() * 31 - 15.5)
 	if(x < 0) x = 0
 	if(x > 1921 - entities[iden].w) x = 1921 - entities[iden].w
 	if(y < 0) y = 0

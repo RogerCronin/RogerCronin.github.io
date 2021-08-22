@@ -111,10 +111,12 @@
 <script>
 
 const id = iden => document.getElementById(iden)
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 
-function updateGameInfo(title, paragraph, link, button = "LAUNCH") {
+function updateGameInfo(title, paragraph, link, mobile = false, button = "LAUNCH") {
 	id("gameInfoTitle").innerHTML = title
 	id("gameInfoParagraph").innerHTML = paragraph
+	if(isMobile && mobile) id("gameInfoParagraph").innerHTML += "<br>* Mobile compatible"
 	id("launchButton").onclick = () => location.href = `/${link}`
 	id("launchButton").innerHTML = button
 }
@@ -126,14 +128,16 @@ function clickGame(game) {
 			updateGameInfo(
 				"JavaScript Message v4.0",
 				"The fourth iteration of JavaScript Message, a social platform intended for in-school use.",
-				"javascriptmessage"
+				"javascriptmessage",
+				true
 			)
 			break
 		case "gnome":
 			updateGameInfo(
 				"Gnome Fighter+",
 				"A riveting button-mashing fighting game staring Gnome and Anti-Gnome, completely remade with bonus content!",
-				"gnomefighter/plus"
+				"gnomefighter/plus",
+				true
 			)
 			break
 		case "tetris":
@@ -147,7 +151,8 @@ function clickGame(game) {
 			updateGameInfo(
 				"Russian Roulette",
 				"The classic party game you know and love, but the \"bullet\" is hearing loss. Earbuds required!",
-				"russianroulette"
+				"russianroulette",
+				true
 			)
 			break
 		case "crab web":
@@ -162,6 +167,7 @@ function clickGame(game) {
 				"Crab Simulator v1.3 (download)",
 				"A download link for Crab Simulator, originally developed on Python 3, then ported to Windows devices.",
 				"crabsimulator/CrabSimulator1.3.zip",
+				false,
 				"DOWNLOAD"
 			)
 			break
