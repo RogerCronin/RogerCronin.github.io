@@ -1,341 +1,404 @@
+<!--
+TODO:
+figure out why I can't get checked property of checkbox
+add local storage stuff
+fix side art for tetris
+make controls screen with default, roger controlsTM, and custom
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>TwitchTetris Control Config</title>
-    <meta charset="UTF-8">
-		<link rel="shortcut icon" type="image/png" href="favicon.png">
-	<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
-	<style>
-	body {
-		font-family: 'Lato';
-		padding: 10px;
-	}
-	td {
-		padding-right: 10px;
-	}
-</style>
+	<title>Twitch Tetris Controls</title>
+  <meta charset="UTF-8">
+	<link rel="shortcut icon" type="image/png" href="favicon.png">
 </head>
 
 <body>
-<b>Controls Config</b><br><br>
+	<h1>Controls Config</h1>
+	<p>Customize your controls, or use a premade set below</p>
 
-<table>
-<tr>
-<td>Left</td>
-<td><select id="shiftLeft">
-	<option value="a">A</option>
-	<option value="b">B</option>
-	<option value="c">C</option>
-	<option value="d">D</option>
-	<option value="e">E</option>
-	<option value="f">F</option>
-	<option value="g">G</option>
-	<option value="h">H</option>
-	<option value="i">I</option>
-	<option value="j">J</option>
-	<option value="k">K</option>
-	<option value="l">L</option>
-	<option value="m">M</option>
-	<option value="n">N</option>
-	<option value="o">O</option>
-	<option value="p">P</option>
-	<option value="q">Q</option>
-	<option value="r">R</option>
-	<option value="s">S</option>
-	<option value="t">T</option>
-	<option value="u">U</option>
-	<option value="v">V</option>
-	<option value="w">W</option>
-	<option value="x">X</option>
-	<option value="y">Y</option>
-	<option value="z">Z</option>
-	<option value="A">Space</option>
-	<option value="B">Shift</option>
-	<option value="C">Comma</option>
-	<option value="D">Period</option>
-	<option value="E">Left</option>
-	<option value="F">Right</option>
-	<option value="G">Up</option>
-	<option value="H">Down</option>
-	<option value="I">Ctrl</option>
-	<option value="J">Alt</option>
-	<option value="K">Forward Slash</option>
-	<option value="L">Semicolon</option>
-</select></td>
-</tr>
-<tr>
-<td>Right</td>
-<td><select id="shiftRight">
-	<option value="a">A</option>
-	<option value="b">B</option>
-	<option value="c">C</option>
-	<option value="d">D</option>
-	<option value="e">E</option>
-	<option value="f">F</option>
-	<option value="g">G</option>
-	<option value="h">H</option>
-	<option value="i">I</option>
-	<option value="j">J</option>
-	<option value="k">K</option>
-	<option value="l">L</option>
-	<option value="m">M</option>
-	<option value="n">N</option>
-	<option value="o">O</option>
-	<option value="p">P</option>
-	<option value="q">Q</option>
-	<option value="r">R</option>
-	<option value="s">S</option>
-	<option value="t">T</option>
-	<option value="u">U</option>
-	<option value="v">V</option>
-	<option value="w">W</option>
-	<option value="x">X</option>
-	<option value="y">Y</option>
-	<option value="z">Z</option>
-	<option value="A">Space</option>
-	<option value="B">Shift</option>
-	<option value="C">Comma</option>
-	<option value="D">Period</option>
-	<option value="E">Left</option>
-	<option value="F">Right</option>
-	<option value="G">Up</option>
-	<option value="H">Down</option>
-	<option value="I">Ctrl</option>
-	<option value="J">Alt</option>
-	<option value="K">Forward Slash</option>
-	<option value="L">Semicolon</option>
-</select></td>
-</tr>
-<tr>
-<td>Rotate Left</td>
-<td><select id="rotateLeft">
-	<option value="a">A</option>
-	<option value="b">B</option>
-	<option value="c">C</option>
-	<option value="d">D</option>
-	<option value="e">E</option>
-	<option value="f">F</option>
-	<option value="g">G</option>
-	<option value="h">H</option>
-	<option value="i">I</option>
-	<option value="j">J</option>
-	<option value="k">K</option>
-	<option value="l">L</option>
-	<option value="m">M</option>
-	<option value="n">N</option>
-	<option value="o">O</option>
-	<option value="p">P</option>
-	<option value="q">Q</option>
-	<option value="r">R</option>
-	<option value="s">S</option>
-	<option value="t">T</option>
-	<option value="u">U</option>
-	<option value="v">V</option>
-	<option value="w">W</option>
-	<option value="x">X</option>
-	<option value="y">Y</option>
-	<option value="z">Z</option>
-	<option value="A">Space</option>
-	<option value="B">Shift</option>
-	<option value="C">Comma</option>
-	<option value="D">Period</option>
-	<option value="E">Left</option>
-	<option value="F">Right</option>
-	<option value="G">Up</option>
-	<option value="H">Down</option>
-	<option value="I">Ctrl</option>
-	<option value="J">Alt</option>
-	<option value="K">Forward Slash</option>
-	<option value="L">Semicolon</option>
-</select></td>
-</tr>
-<tr>
-<td>Rotate Right</td>
-<td><select id="rotateRight">
-	<option value="a">A</option>
-	<option value="b">B</option>
-	<option value="c">C</option>
-	<option value="d">D</option>
-	<option value="e">E</option>
-	<option value="f">F</option>
-	<option value="g">G</option>
-	<option value="h">H</option>
-	<option value="i">I</option>
-	<option value="j">J</option>
-	<option value="k">K</option>
-	<option value="l">L</option>
-	<option value="m">M</option>
-	<option value="n">N</option>
-	<option value="o">O</option>
-	<option value="p">P</option>
-	<option value="q">Q</option>
-	<option value="r">R</option>
-	<option value="s">S</option>
-	<option value="t">T</option>
-	<option value="u">U</option>
-	<option value="v">V</option>
-	<option value="w">W</option>
-	<option value="x">X</option>
-	<option value="y">Y</option>
-	<option value="z">Z</option>
-	<option value="A">Space</option>
-	<option value="B">Shift</option>
-	<option value="C">Comma</option>
-	<option value="D">Period</option>
-	<option value="E">Left</option>
-	<option value="F">Right</option>
-	<option value="G">Up</option>
-	<option value="H">Down</option>
-	<option value="I">Ctrl</option>
-	<option value="J">Alt</option>
-	<option value="K">Forward Slash</option>
-	<option value="L">Semicolon</option>
-</select></td>
-</tr>
-<tr>
-<td>Soft Drop</td>
-<td><select id="softDrop">
-	<option value="a">A</option>
-	<option value="b">B</option>
-	<option value="c">C</option>
-	<option value="d">D</option>
-	<option value="e">E</option>
-	<option value="f">F</option>
-	<option value="g">G</option>
-	<option value="h">H</option>
-	<option value="i">I</option>
-	<option value="j">J</option>
-	<option value="k">K</option>
-	<option value="l">L</option>
-	<option value="m">M</option>
-	<option value="n">N</option>
-	<option value="o">O</option>
-	<option value="p">P</option>
-	<option value="q">Q</option>
-	<option value="r">R</option>
-	<option value="s">S</option>
-	<option value="t">T</option>
-	<option value="u">U</option>
-	<option value="v">V</option>
-	<option value="w">W</option>
-	<option value="x">X</option>
-	<option value="y">Y</option>
-	<option value="z">Z</option>
-	<option value="A">Space</option>
-	<option value="B">Shift</option>
-	<option value="C">Comma</option>
-	<option value="D">Period</option>
-	<option value="E">Left</option>
-	<option value="F">Right</option>
-	<option value="G">Up</option>
-	<option value="H">Down</option>
-	<option value="I">Ctrl</option>
-	<option value="J">Alt</option>
-	<option value="K">Forward Slash</option>
-	<option value="L">Semicolon</option>
-</select></td>
-</tr>
-<tr>
-<td>Hard Drop</td>
-<td><select id="hardDrop">
-	<option value="a">A</option>
-	<option value="b">B</option>
-	<option value="c">C</option>
-	<option value="d">D</option>
-	<option value="e">E</option>
-	<option value="f">F</option>
-	<option value="g">G</option>
-	<option value="h">H</option>
-	<option value="i">I</option>
-	<option value="j">J</option>
-	<option value="k">K</option>
-	<option value="l">L</option>
-	<option value="m">M</option>
-	<option value="n">N</option>
-	<option value="o">O</option>
-	<option value="p">P</option>
-	<option value="q">Q</option>
-	<option value="r">R</option>
-	<option value="s">S</option>
-	<option value="t">T</option>
-	<option value="u">U</option>
-	<option value="v">V</option>
-	<option value="w">W</option>
-	<option value="x">X</option>
-	<option value="y">Y</option>
-	<option value="z">Z</option>
-	<option value="A">Space</option>
-	<option value="B">Shift</option>
-	<option value="C">Comma</option>
-	<option value="D">Period</option>
-	<option value="E">Left</option>
-	<option value="F">Right</option>
-	<option value="G">Up</option>
-	<option value="H">Down</option>
-	<option value="I">Ctrl</option>
-	<option value="J">Alt</option>
-	<option value="K">Forward Slash</option>
-	<option value="L">Semicolon</option>
-</select></td>
-</tr>
-<tr>
-<td>Swap</td>
-<td><select id="swap">
-	<option value="a">A</option>
-	<option value="b">B</option>
-	<option value="c">C</option>
-	<option value="d">D</option>
-	<option value="e">E</option>
-	<option value="f">F</option>
-	<option value="g">G</option>
-	<option value="h">H</option>
-	<option value="i">I</option>
-	<option value="j">J</option>
-	<option value="k">K</option>
-	<option value="l">L</option>
-	<option value="m">M</option>
-	<option value="n">N</option>
-	<option value="o">O</option>
-	<option value="p">P</option>
-	<option value="q">Q</option>
-	<option value="r">R</option>
-	<option value="s">S</option>
-	<option value="t">T</option>
-	<option value="u">U</option>
-	<option value="v">V</option>
-	<option value="w">W</option>
-	<option value="x">X</option>
-	<option value="y">Y</option>
-	<option value="z">Z</option>
-	<option value="A">Space</option>
-	<option value="B">Shift</option>
-	<option value="C">Comma</option>
-	<option value="D">Period</option>
-	<option value="E">Left</option>
-	<option value="F">Right</option>
-	<option value="G">Up</option>
-	<option value="H">Down</option>
-	<option value="I">Ctrl</option>
-	<option value="J">Alt</option>
-	<option value="K">Forward Slash</option>
-	<option value="L">Semicolon</option>
-</select></td>
-</tr>
-</table>
-<br>
+	<table>
+		<tr>
+			<td>Left</td>
+			<td>
+				<select id="shiftLeft">
+					<option value="a">A</option>
+					<option value="b">B</option>
+					<option value="c">C</option>
+					<option value="d">D</option>
+					<option value="e">E</option>
+					<option value="f">F</option>
+					<option value="g">G</option>
+					<option value="h">H</option>
+					<option value="i">I</option>
+					<option value="j">J</option>
+					<option value="k">K</option>
+					<option value="l">L</option>
+					<option value="m">M</option>
+					<option value="n">N</option>
+					<option value="o">O</option>
+					<option value="p">P</option>
+					<option value="q">Q</option>
+					<option value="r">R</option>
+					<option value="s">S</option>
+					<option value="t">T</option>
+					<option value="u">U</option>
+					<option value="v">V</option>
+					<option value="w">W</option>
+					<option value="x">X</option>
+					<option value="y">Y</option>
+					<option value="z">Z</option>
+					<option value="A">Space</option>
+					<option value="B">Shift</option>
+					<option value="C">Comma</option>
+					<option value="D">Period</option>
+					<option value="E">Left</option>
+					<option value="F">Right</option>
+					<option value="G">Up</option>
+					<option value="H">Down</option>
+					<option value="I">Ctrl</option>
+					<option value="J">Alt</option>
+					<option value="K">Forward Slash</option>
+					<option value="L">Semicolon</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Right</td>
+			<td>
+				<select id="shiftRight">
+					<option value="a">A</option>
+					<option value="b">B</option>
+					<option value="c">C</option>
+					<option value="d">D</option>
+					<option value="e">E</option>
+					<option value="f">F</option>
+					<option value="g">G</option>
+					<option value="h">H</option>
+					<option value="i">I</option>
+					<option value="j">J</option>
+					<option value="k">K</option>
+					<option value="l">L</option>
+					<option value="m">M</option>
+					<option value="n">N</option>
+					<option value="o">O</option>
+					<option value="p">P</option>
+					<option value="q">Q</option>
+					<option value="r">R</option>
+					<option value="s">S</option>
+					<option value="t">T</option>
+					<option value="u">U</option>
+					<option value="v">V</option>
+					<option value="w">W</option>
+					<option value="x">X</option>
+					<option value="y">Y</option>
+					<option value="z">Z</option>
+					<option value="A">Space</option>
+					<option value="B">Shift</option>
+					<option value="C">Comma</option>
+					<option value="D">Period</option>
+					<option value="E">Left</option>
+					<option value="F">Right</option>
+					<option value="G">Up</option>
+					<option value="H">Down</option>
+					<option value="I">Ctrl</option>
+					<option value="J">Alt</option>
+					<option value="K">Forward Slash</option>
+					<option value="L">Semicolon</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Rotate Left</td>
+			<td>
+				<select id="rotateLeft">
+					<option value="a">A</option>
+					<option value="b">B</option>
+					<option value="c">C</option>
+					<option value="d">D</option>
+					<option value="e">E</option>
+					<option value="f">F</option>
+					<option value="g">G</option>
+					<option value="h">H</option>
+					<option value="i">I</option>
+					<option value="j">J</option>
+					<option value="k">K</option>
+					<option value="l">L</option>
+					<option value="m">M</option>
+					<option value="n">N</option>
+					<option value="o">O</option>
+					<option value="p">P</option>
+					<option value="q">Q</option>
+					<option value="r">R</option>
+					<option value="s">S</option>
+					<option value="t">T</option>
+					<option value="u">U</option>
+					<option value="v">V</option>
+					<option value="w">W</option>
+					<option value="x">X</option>
+					<option value="y">Y</option>
+					<option value="z">Z</option>
+					<option value="A">Space</option>
+					<option value="B">Shift</option>
+					<option value="C">Comma</option>
+					<option value="D">Period</option>
+					<option value="E">Left</option>
+					<option value="F">Right</option>
+					<option value="G">Up</option>
+					<option value="H">Down</option>
+					<option value="I">Ctrl</option>
+					<option value="J">Alt</option>
+					<option value="K">Forward Slash</option>
+					<option value="L">Semicolon</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Rotate Right</td>
+			<td>
+				<select id="rotateRight">
+					<option value="a">A</option>
+					<option value="b">B</option>
+					<option value="c">C</option>
+					<option value="d">D</option>
+					<option value="e">E</option>
+					<option value="f">F</option>
+					<option value="g">G</option>
+					<option value="h">H</option>
+					<option value="i">I</option>
+					<option value="j">J</option>
+					<option value="k">K</option>
+					<option value="l">L</option>
+					<option value="m">M</option>
+					<option value="n">N</option>
+					<option value="o">O</option>
+					<option value="p">P</option>
+					<option value="q">Q</option>
+					<option value="r">R</option>
+					<option value="s">S</option>
+					<option value="t">T</option>
+					<option value="u">U</option>
+					<option value="v">V</option>
+					<option value="w">W</option>
+					<option value="x">X</option>
+					<option value="y">Y</option>
+					<option value="z">Z</option>
+					<option value="A">Space</option>
+					<option value="B">Shift</option>
+					<option value="C">Comma</option>
+					<option value="D">Period</option>
+					<option value="E">Left</option>
+					<option value="F">Right</option>
+					<option value="G">Up</option>
+					<option value="H">Down</option>
+					<option value="I">Ctrl</option>
+					<option value="J">Alt</option>
+					<option value="K">Forward Slash</option>
+					<option value="L">Semicolon</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Soft Drop</td>
+			<td>
+				<select id="softDrop">
+					<option value="a">A</option>
+					<option value="b">B</option>
+					<option value="c">C</option>
+					<option value="d">D</option>
+					<option value="e">E</option>
+					<option value="f">F</option>
+					<option value="g">G</option>
+					<option value="h">H</option>
+					<option value="i">I</option>
+					<option value="j">J</option>
+					<option value="k">K</option>
+					<option value="l">L</option>
+					<option value="m">M</option>
+					<option value="n">N</option>
+					<option value="o">O</option>
+					<option value="p">P</option>
+					<option value="q">Q</option>
+					<option value="r">R</option>
+					<option value="s">S</option>
+					<option value="t">T</option>
+					<option value="u">U</option>
+					<option value="v">V</option>
+					<option value="w">W</option>
+					<option value="x">X</option>
+					<option value="y">Y</option>
+					<option value="z">Z</option>
+					<option value="A">Space</option>
+					<option value="B">Shift</option>
+					<option value="C">Comma</option>
+					<option value="D">Period</option>
+					<option value="E">Left</option>
+					<option value="F">Right</option>
+					<option value="G">Up</option>
+					<option value="H">Down</option>
+					<option value="I">Ctrl</option>
+					<option value="J">Alt</option>
+					<option value="K">Forward Slash</option>
+					<option value="L">Semicolon</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Hard Drop</td>
+			<td>
+				<select id="hardDrop">
+					<option value="a">A</option>
+					<option value="b">B</option>
+					<option value="c">C</option>
+					<option value="d">D</option>
+					<option value="e">E</option>
+					<option value="f">F</option>
+					<option value="g">G</option>
+					<option value="h">H</option>
+					<option value="i">I</option>
+					<option value="j">J</option>
+					<option value="k">K</option>
+					<option value="l">L</option>
+					<option value="m">M</option>
+					<option value="n">N</option>
+					<option value="o">O</option>
+					<option value="p">P</option>
+					<option value="q">Q</option>
+					<option value="r">R</option>
+					<option value="s">S</option>
+					<option value="t">T</option>
+					<option value="u">U</option>
+					<option value="v">V</option>
+					<option value="w">W</option>
+					<option value="x">X</option>
+					<option value="y">Y</option>
+					<option value="z">Z</option>
+					<option value="A">Space</option>
+					<option value="B">Shift</option>
+					<option value="C">Comma</option>
+					<option value="D">Period</option>
+					<option value="E">Left</option>
+					<option value="F">Right</option>
+					<option value="G">Up</option>
+					<option value="H">Down</option>
+					<option value="I">Ctrl</option>
+					<option value="J">Alt</option>
+					<option value="K">Forward Slash</option>
+					<option value="L">Semicolon</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Swap</td>
+			<td>
+				<select id="swap">
+					<option value="a">A</option>
+					<option value="b">B</option>
+					<option value="c">C</option>
+					<option value="d">D</option>
+					<option value="e">E</option>
+					<option value="f">F</option>
+					<option value="g">G</option>
+					<option value="h">H</option>
+					<option value="i">I</option>
+					<option value="j">J</option>
+					<option value="k">K</option>
+					<option value="l">L</option>
+					<option value="m">M</option>
+					<option value="n">N</option>
+					<option value="o">O</option>
+					<option value="p">P</option>
+					<option value="q">Q</option>
+					<option value="r">R</option>
+					<option value="s">S</option>
+					<option value="t">T</option>
+					<option value="u">U</option>
+					<option value="v">V</option>
+					<option value="w">W</option>
+					<option value="x">X</option>
+					<option value="y">Y</option>
+					<option value="z">Z</option>
+					<option value="A">Space</option>
+					<option value="B">Shift</option>
+					<option value="C">Comma</option>
+					<option value="D">Period</option>
+					<option value="E">Left</option>
+					<option value="F">Right</option>
+					<option value="G">Up</option>
+					<option value="H">Down</option>
+					<option value="I">Ctrl</option>
+					<option value="J">Alt</option>
+					<option value="K">Forward Slash</option>
+					<option value="L">Semicolon</option>
+				</select>
+			</td>
+		</tr>
+	</table>
 
-<input type="button" value="Generate Link" onclick="generateLink()"></input><br>
-<i><div id="linkSpace"></div></i>
+	<button onclick="generateLink()">Generate Link</button>
+	<i><div id="linkSpace"></div></i>
+	<i><a target="_blank" href="game?controls=EFHzxcA">squarebrackets.net/twitchtetris/game?controls=EFHzxcA</a><br>Default controls (arrow keys, zx rotate, space HD, down SD, c hold)</i>
+	<i><a target="_blank" href="game?controls=EFHzxcG">squarebrackets.net/twitchtetris/game?controls=EFHzxcG</a><br>Better controls (arrow keys, zx rotate, up HD, down SD, c hold)</i>
 
 </body>
 
+<style>
+	@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+	body {
+		font-family: VT323;
+		font-size: 2em;
+		display: flex;
+		align-items: center;
+		content-justify: center;
+		flex-direction: column;
+		background-color: #100F10;
+		color: #008000;
+	}
+
+	table {
+		margin-bottom: 1em;
+	}
+
+	button {
+		font-family: VT323;
+		border: 4px solid #302F30;
+		border-radius: 10px;
+		background-color: black;
+		color: #008000;
+		padding: 0.5em;
+		font-size: 1em;
+		margin-bottom: 1em;
+	}
+
+	td {
+		padding: 0 1em;
+	}
+
+	i {
+		margin-bottom: 1em;
+		text-align: center;
+	}
+
+	a {
+		color: white;
+	}
+
+	h1 {
+		margin-bottom: 0em;
+	}
+</style>
+
 <script>
+
 function id(id) {
 	return document.getElementById(id)
 }
 function generateLink() {
 	controlString = id("shiftLeft").value + id("shiftRight").value + id("softDrop").value + id("rotateLeft").value + id("rotateRight").value + id("swap").value + id("hardDrop").value
-	id("linkSpace").innerHTML = "<a target='_blank' href='game?controls=" + controlString + "'>mixedlaughs.tk/twitchtetris/game?controls=" + controlString + "</a><br>Go to this link and bookmark the page"
+	id("linkSpace").innerHTML = "<a target='_blank' href='game?controls=" + controlString + "'>squarebrackets.net/twitchtetris/game?controls=" + controlString + "</a><br>Go to this link and bookmark the page"
 	id("shiftLeft").value
 } // //mixedlaughs.tk/twitchtetris/game?controls=
+
 </script>

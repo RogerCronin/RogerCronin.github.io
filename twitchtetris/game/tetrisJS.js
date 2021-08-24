@@ -3013,6 +3013,10 @@ function Tetris(d) {
     }
 }
 window.onload = function() {
+
+		document.getElementById("centerScreen").checked = window.localStorage.getItem("centerScreen") == "true"
+		centerScreen(document.getElementById("centerScreen").checked)
+
     loadGameControls();
     jaws.assets.add("media/blueblock.png");
     jaws.assets.add("media/cyanblock.png");
@@ -3041,3 +3045,12 @@ function sendScoreRequest(c) {
 function loadGameControls() {
 	// don't even think about it
 };
+
+function centerScreen(checked) {
+	window.localStorage.setItem("centerScreen", checked)
+	if(checked) {
+		document.body.style.display = "flex"
+	} else {
+		document.body.style.display = "block"
+	}
+}

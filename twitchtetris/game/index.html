@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>TwitchTetris</title>
+    <title>Twitch Tetris</title>
 	<link rel="shortcut icon" type="image/png" href="../favicon.png"/>
     <script src="cookie.js"></script>
 	<script src="tetrisJS.js"></script>
@@ -26,7 +26,8 @@
 	      <p>Use the keyboard controls to rotate and move the blocks as they fall</p>
 	      <p>Place the blocks to form horizontal lines, which will be removed and make all the blocks above fall down. If the blocks reach the top of the screen, the game is over!</p>
 	      <p>Clear multiple lines at a time, or clear lines in consective moves to earn more points.</p>
-		  <input type="checkbox" id="infiniteCheck"><b>Infinite Mode</b></input>
+		  <input type="checkbox" id="infiniteCheck"><b>Infinite Mode</b></input><br>
+			<input type="checkbox" id="centerScreen" onclick="centerScreen(this.checked)"><b>Center Screen</b></input>
 	    </div>
 	  </div>
 	</td>
