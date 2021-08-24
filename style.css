@@ -10,6 +10,7 @@
 	--green: #386641;
 	--gray: #CDCDCD;
 	--red: #DF2935;
+	--alert: #F34213;
 }
 
 h1, h2, h3 {
@@ -247,4 +248,8 @@ button:hover {
 	height: 200px;
 	border-radius: 1em;
 	clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 85%);
+}
+
+span.darkred {
+	color: var(--alert);
 }
