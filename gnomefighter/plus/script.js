@@ -206,7 +206,11 @@ async function win(gnomeWin) {
 		spawnExplosion(gnomeWin)
 		await sleep(10)
 	}
+	if(gnomeWin) id("antiGnome").style.transform = "rotate(90deg) scaleX(-1)"
+	else id("gnome").style.transform = "rotate(-90deg)"
 	await sleep(4000)
+	id("gnome").style.transform = ""
+	id("antiGnome").style.transform = "scaleX(-1)"
 	gameState = 0
 	id("titleImage").style.opacity = 1
 	id("startButton").style.opacity = 1
