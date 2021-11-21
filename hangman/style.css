@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap");
+
+:root {
+	--black: #061826;
+	--blue: #0471A6;
+	--purple: #522B47;
+	--white: #E8E8E8;
+	--green: #386641;
+	--gray: #CDCDCD;
+	--red: #DF2935;
+	--alert: #F34213;
+}
+
+body {
+	background-color: var(--blue);
+	margin: 0;
+	overflow: hidden;
+}
+
+#highscore {
+	font-family: "Open Sans", sans-serif;
+	color: var(--white);
+	font-weight: bold;
+	font-size: min(2vh, 1.8em);
+	position: absolute;
+	top: 1em;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 90%;
+	text-align: center;
+}
+
+#screen {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(232, 232, 232, 0.6);
+	transition: background-color 0.5s;
+}
+
+#screenStart {
+	transition: opacity 0.5s;
+	opacity: 1;
+	width: 100%;
+	height: 60%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 2em;
+}
+
+#screenStart div {
+	transition: transform 0.08s;
+	transition-timing-function: ease-out;
+	font-family: "Open Sans", sans-serif;
+	color: var(--white);
+	text-transform: uppercase;
+	background-color: var(--purple);
+	border: 0.1em solid var(--black);
+	border-radius: 0.1em;
+	text-align: center;
+	font-weight: bold;
+	font-size: max(1.6em, 3.5vw);
+	user-select: none;
+	cursor: pointer;
+	width: 8em;
+}
+
+#words {
+	margin-top: 1em;
+	width: 100vw;
+	text-align: center;
+	font-family: "Open Sans", sans-serif;
+	color: var(--white);
+	font-weight: bold;
+	font-size: min(5vh, 4.5em);
+	word-wrap: normal;
+}
+
+#hint {
+	text-transform: capitalize;
+	margin-top: 1em;
+}
+
+#guess {
+	font-family: "Oxygen Mono", monospace;
+	text-transform: uppercase;
+	margin: 0.3em;
+	letter-spacing: 0.3em;
+}
+
+#remaining {
+	top: 0;
+	position: absolute;
+	text-align: center;
+	font-family: "Open Sans", sans-serif;
+	color: var(--white);
+	font-weight: bold;
+	font-size: 17vh;
+	width: 100vw;
+}
+
+#letters {
+	position: absolute;
+	bottom: 2em;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5em;
+}
+
+.letter {
+	transition: transform 0.08s;
+	transition-timing-function: ease-out;
+	font-family: "Open Sans", sans-serif;
+	color: var(--white);
+	text-transform: uppercase;
+	background-color: var(--purple);
+	border: 0.1em solid var(--black);
+	border-radius: 0.1em;
+	text-align: center;
+	font-weight: bold;
+	font-size: max(1.6em, 3.5vw);
+	user-select: none;
+	cursor: pointer;
+	length: 1.5em;
+	width: 1.5em;
+}
+
+.correct {
+	transform: scale(.9, .9);
+	background-color: var(--green);
+}
+
+.incorrect {
+	transform: scale(.9, .9);
+	background-color: var(--red);
+}
+
+.explosion {
+	position: absolute;
+	width: 160px;
+	height: 160px;
+	background-image: url("explosion.png");
+	background-repeat: no-repeat;
+}
+
+.fireworks {
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	background-image: url("fireworks.png");
+	background-repeat: no-repeat;
+}

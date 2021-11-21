@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<meta charset="utf-8" name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+		<title>Hangman</title>
+		<link rel="shortcut icon" type="image/png" href="favicon.png">
+		<link href="style.css" rel="stylesheet" type="text/css">
+	</head>
+	<script src="words.js"></script>
+	<script src="script.js"></script>
+	<body onload="load()">
+		<div id="highscore">Score: 0 - Best: 0</div>
+		<div id="words">
+			<p id="hint">Pick a difficulty</p>
+			<p id="guess">please</p>
+		</div>
+		<div id="remaining">7/7</div>
+		<div id="letters"></div>
+		<div id="screen">
+			<div id="screenStart">
+				<div onclick="startRound(1)">Easy<br>7 lives</div>
+				<div onclick="startRound(2)">Medium<br>6 lives</div>
+				<div onclick="startRound(3)">Hard<br>5 lives</div>
+			</div>
+		</div>
+	</body>
+</html>
