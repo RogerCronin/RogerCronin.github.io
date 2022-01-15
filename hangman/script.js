@@ -111,13 +111,13 @@ function resetLetters() {
 async function win() {
 	state = 2
 	score += lives
-	updateTexts()
 	new Audio("fireworks.wav").play()
 	for(let i = 0; i < 200; i++) {
 		spawnSprite(false)
 		await sleep(10)
 	}
 	await sleep(3000)
+	updateTexts()
 	return
 }
 
