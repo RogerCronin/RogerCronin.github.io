@@ -2,13 +2,63 @@ var word, guessWord
 var lives = 7
 var maxLives = 7
 var score = 0
-var state = 0
-WORDS_LIST = JSON.parse(WORDS_LIST).words
 // 0 menu
 // 1 in game
 // 2 inbetween
+var state = 0
+
+WORDS_LIST = JSON.parse(WORDS_LIST).words
+
+const letterSprites = {
+	p: [
+		[true,  true,  true ],
+		[true,  false, true ],
+		[true,  true,  false],
+		[true,  false, false],
+		[true,  false, false]
+	],
+	e: [
+		[true,  true,  true ],
+		[true,  false, false],
+		[true,  true,  false],
+		[true,  false, false],
+		[true,  true,  true ]
+	],
+	r: [
+		[true,  true,  true ],
+		[true,  false, true ],
+		[true,  true,  false],
+		[true,  false, true ],
+		[true,  false, true ]
+	],
+	f: [
+		[true,  true,  true ],
+		[true,  false, false],
+		[true,  true,  false],
+		[true,  false, false],
+		[true,  false, false]
+	],
+	c: [
+		[true,  true,  true ],
+		[true,  false, false],
+		[true,  false, false],
+		[true,  false, false],
+		[true,  true,  true ]
+	],
+	t: [
+		[true,  true,  true ],
+		[false, true,  false],
+		[false, true,  false],
+		[false, true,  false],
+		[false, true,  false]
+	]
+}
 
 const sleep = ms => new Promise((a, b) => setTimeout(a, ms))
+function randomPos(isTop) {
+	if(isTop) return window.innerHeight / 2 + (Math.random() * window.innerHeight - window.innerHeight / 2)
+	else return window.innerWidth / 2 + (Math.random() * window.innerWidth - window.innerWidth / 2)
+}
 
 async function startRound(difficulty) {
 	if(state != 0) return
@@ -42,6 +92,7 @@ function selectWord() {
 	hint = res.hint.toLowerCase()
 	word = res.word.toLowerCase()
 	guessWord = word.replace(/[a-z]/g, "_")
+	console.log(word)
 	updateTexts()
 }
 
@@ -112,11 +163,15 @@ async function win() {
 	state = 2
 	score += lives
 	new Audio("fireworks.wav").play()
-	for(let i = 0; i < 200; i++) {
-		spawnSprite(false)
-		await sleep(10)
+	if(lives == maxLives) {
+		await spawnPerfect()
+	} else {
+		for(let i = 0; i < 200; i++) {
+			spawnPixel(false, randomPos(false), randomPos(true))
+			await sleep(10)
+		}
+		await sleep(3000)
 	}
-	await sleep(3000)
 	updateTexts()
 	return
 }
@@ -132,33 +187,66 @@ async function die() {
 	new Audio("explosion.wav").play()
 	updateTexts()
 	for(let i = 0; i < 120; i++) {
-		spawnSprite(true)
+		spawnPixel(true, randomPos(false), randomPos(true))
 		await sleep(5)
 	}
 	await sleep(4000)
 	return
 }
 
-async function spawnSprite(isExplosion) {
-	let explosion = document.createElement("div")
-	explosion.classList.add(isExplosion ? "explosion" : "fireworks")
-	explosion.style.left = `${window.innerWidth / 2 + (Math.random() * window.innerWidth - window.innerWidth / 2)}px`
-	explosion.style.top = `${window.innerHeight / 2 + (Math.random() * window.innerHeight - window.innerHeight / 2)}px`
-	if(!isExplosion) explosion.style.filter = `hue-rotate(${Math.floor(Math.random() * 360)}deg)`
-	document.body.appendChild(explosion)
+async function spawnPerfect() {
+	pixelWidth = window.innerWidth / 29
+	if(pixelWidth > 30) {
+		await spawnLetter(letterSprites.p, pixelWidth, 1)
+		await spawnLetter(letterSprites.e, pixelWidth, 5)
+		await spawnLetter(letterSprites.r, pixelWidth, 9)
+		await spawnLetter(letterSprites.f, pixelWidth, 13)
+		await spawnLetter(letterSprites.e, pixelWidth, 17)
+		await spawnLetter(letterSprites.c, pixelWidth, 21)
+		await spawnLetter(letterSprites.t, pixelWidth, 25)
+		await sleep(4000)
+	} else {
+		for(let i = 0; i < 200; i++) {
+			spawnPixel(false, randomPos(false), randomPos(true))
+			await sleep(10)
+		}
+		await sleep(3000)
+	}
+}
+
+async function spawnLetter(matrix, pixelWidth, offset) {
+	for(let x = 0; x < matrix[0].length; x++) {
+		for(let y = 0; y < matrix.length; y++) {
+			if(matrix[y][x]) spawnPixel(false,
+					pixelWidth * x + pixelWidth * offset,
+					pixelWidth * y + window.innerHeight / 2 - pixelWidth * 3,
+					[Math.random() * 500, 1500])
+		}
+	}
+}
+
+async function spawnPixel(isExplosion, left, top, sleepTime = [0, 0]) {
+	await sleep(sleepTime[0])
+	let pixel = document.createElement("div")
+	pixel.classList.add(isExplosion ? "explosion" : "fireworks")
+	pixel.style.left = `${left}px`
+	pixel.style.top = `${top}px`
+	if(!isExplosion) pixel.style.filter = `hue-rotate(${Math.floor(Math.random() * 360)}deg)`
+	document.body.appendChild(pixel)
 	if(isExplosion) {
 		for(let i = 0; i < 16; i++) {
-			explosion.style.backgroundPosition = `0px -${i * 160}px`
+			pixel.style.backgroundPosition = `0px -${i * 160}px`
 			await sleep(25)
 		}
 	} else {
 		for(let i = 0; i < 16; i++) {
-			explosion.style.backgroundPosition = `0px -${i * 40}px`
+			pixel.style.backgroundPosition = `0px -${i * 40}px`
 			await sleep(75)
 		}
 		await sleep(Math.random() * 800)
 	}
-	explosion.parentNode.removeChild(explosion)
+	await sleep(sleepTime[1])
+	pixel.parentNode.removeChild(pixel)
 }
 
 function updateTexts() {

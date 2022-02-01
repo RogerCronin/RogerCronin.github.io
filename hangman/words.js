@@ -7016,9 +7016,17 @@ let WORDS_LIST = `{
       "word": "Boeing",
       "hint": "Famous Brands"
     },
-	{
+    {
       "word": "deez nuts",
       "hint": "Eat & Drink"
+    },
+    {
+      "word": "Gnome Fighter",
+      "hint": "Video Games"
+    },
+    {
+      "word": "Crab Simulator",
+      "hint": "Video Games"
     }
   ]
 }`
