@@ -92,7 +92,6 @@ function selectWord() {
 	hint = res.hint.toLowerCase()
 	word = res.word.toLowerCase()
 	guessWord = word.replace(/[a-z]/g, "_")
-	console.log(word)
 	updateTexts()
 }
 
