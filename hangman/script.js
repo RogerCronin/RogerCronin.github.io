@@ -1,11 +1,13 @@
-var word, guessWord
-var lives = 7
-var maxLives = 7
-var score = 0
+let word, guessWord
+let lives = 7
+let maxLives = 7
+let score = 0
 // 0 menu
 // 1 in game
 // 2 inbetween
-var state = 0
+// 3 leaderboard input
+// 4 waiting for leaderboard
+let state = 0
 
 WORDS_LIST = JSON.parse(WORDS_LIST).words
 
@@ -55,10 +57,6 @@ const letterSprites = {
 }
 
 const sleep = ms => new Promise((a, b) => setTimeout(a, ms))
-function randomPos(isTop) {
-	if(isTop) return window.innerHeight / 2 + (Math.random() * window.innerHeight - window.innerHeight / 2)
-	else return window.innerWidth / 2 + (Math.random() * window.innerWidth - window.innerWidth / 2)
-}
 
 async function startRound(difficulty) {
 	if(state != 0) return
@@ -96,6 +94,7 @@ function selectWord() {
 }
 
 function guess(e) {
+	if(state == 3) return leaderboardInput(e)
 	if(state != 1) return
 	e = e.target || e
 	if(e.classList.contains("correct") || e.classList.contains("incorrect")) return
@@ -137,9 +136,10 @@ async function incorrect(e) {
 	updateTexts()
 	if(lives < 1) {
 		await die()
+		if(state == 3) return
 		resetLetters()
-		hint = "pick a difficulty"
-		guessWord = "please"
+		hint = "hangman"
+		guessWord = "_____"
 		updateTexts()
 		screenDiv.addEventListener("transitionend", () => {
 			state = 0
@@ -152,7 +152,7 @@ async function incorrect(e) {
 
 function resetLetters() {
 	for(let e of lettersDiv.childNodes) {
-		e.classList.remove("correct", "incorrect")
+		e.classList.remove("correct", "incorrect", "pressed")
 		e.style.transitionTimingFunction = "ease-out"
 		e.style.transform = ""
 	}
@@ -161,7 +161,7 @@ function resetLetters() {
 async function win() {
 	state = 2
 	score += lives
-	new Audio("fireworks.wav").play()
+	new Audio("./assets/fireworks.wav").play()
 	if(lives == maxLives) {
 		await spawnPerfect()
 	} else {
@@ -183,69 +183,17 @@ async function die() {
 		data[maxLives == 7 ? "easy" : maxLives == 6 ? "medium" : "hard"] = score
 		localStorage.setItem("scores", JSON.stringify(data))
 	}
-	new Audio("explosion.wav").play()
+	new Audio("./assets/explosion.wav").play()
 	updateTexts()
 	for(let i = 0; i < 120; i++) {
 		spawnPixel(true, randomPos(false), randomPos(true))
 		await sleep(5)
 	}
 	await sleep(4000)
+	if(score > leaderboardHigh && useLeaderboard) {
+		handleLeaderboard()
+	}
 	return
-}
-
-async function spawnPerfect() {
-	pixelWidth = window.innerWidth / 29
-	if(pixelWidth > 30) {
-		await spawnLetter(letterSprites.p, pixelWidth, 1)
-		await spawnLetter(letterSprites.e, pixelWidth, 5)
-		await spawnLetter(letterSprites.r, pixelWidth, 9)
-		await spawnLetter(letterSprites.f, pixelWidth, 13)
-		await spawnLetter(letterSprites.e, pixelWidth, 17)
-		await spawnLetter(letterSprites.c, pixelWidth, 21)
-		await spawnLetter(letterSprites.t, pixelWidth, 25)
-		await sleep(4000)
-	} else {
-		for(let i = 0; i < 200; i++) {
-			spawnPixel(false, randomPos(false), randomPos(true))
-			await sleep(10)
-		}
-		await sleep(3000)
-	}
-}
-
-async function spawnLetter(matrix, pixelWidth, offset) {
-	for(let x = 0; x < matrix[0].length; x++) {
-		for(let y = 0; y < matrix.length; y++) {
-			if(matrix[y][x]) spawnPixel(false,
-					pixelWidth * x + pixelWidth * offset,
-					pixelWidth * y + window.innerHeight / 2 - pixelWidth * 3,
-					[Math.random() * 500, 1500])
-		}
-	}
-}
-
-async function spawnPixel(isExplosion, left, top, sleepTime = [0, 0]) {
-	await sleep(sleepTime[0])
-	let pixel = document.createElement("div")
-	pixel.classList.add(isExplosion ? "explosion" : "fireworks")
-	pixel.style.left = `${left}px`
-	pixel.style.top = `${top}px`
-	if(!isExplosion) pixel.style.filter = `hue-rotate(${Math.floor(Math.random() * 360)}deg)`
-	document.body.appendChild(pixel)
-	if(isExplosion) {
-		for(let i = 0; i < 16; i++) {
-			pixel.style.backgroundPosition = `0px -${i * 160}px`
-			await sleep(25)
-		}
-	} else {
-		for(let i = 0; i < 16; i++) {
-			pixel.style.backgroundPosition = `0px -${i * 40}px`
-			await sleep(75)
-		}
-		await sleep(Math.random() * 800)
-	}
-	await sleep(sleepTime[1])
-	pixel.parentNode.removeChild(pixel)
 }
 
 function updateTexts() {
@@ -256,10 +204,11 @@ function updateTexts() {
 }
 
 function resize() {
+	lettersDiv.style.top = `${window.innerHeight * 0.97 - lettersDiv.clientHeight}px`
 	remainingDiv.style.top = `${(guessDiv.getBoundingClientRect().bottom + lettersDiv.getBoundingClientRect().top) / 2.7}px`
 }
 
-var hintDiv, guessDiv, remainingDiv, lettersDiv, screenDiv, screenStartDiv, highscoreDiv
+let hintDiv, guessDiv, remainingDiv, lettersDiv, screenDiv, screenStartDiv, highscoreDiv, screenLeaderboard
 
 function load() {
 	if(!localStorage.getItem("scores")) localStorage.setItem("scores", JSON.stringify({ easy: 0, medium: 0, hard: 0 }))
@@ -270,6 +219,7 @@ function load() {
 	screenDiv = document.getElementById("screen")
 	screenStartDiv = document.getElementById("screenStart")
 	highscoreDiv = document.getElementById("highscore")
+	screenLeaderboard = document.getElementById("screenLeaderboard")
 	for(let i = 97; i < 123; i++) {
 		let div = document.createElement("div")
 		div.classList.add("letter")
@@ -284,4 +234,5 @@ function load() {
 		if(a) guess(a)
 	})
 	resize()
+	populateLeaderboard()
 }

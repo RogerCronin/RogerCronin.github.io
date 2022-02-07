@@ -6,20 +6,37 @@
 		<link href="style.css" rel="stylesheet" type="text/css">
 	</head>
 	<script src="words.js"></script>
+	<script src="graphics.js"></script>
+	<script src="leaderboard.js"></script>
 	<script src="script.js"></script>
 	<body onload="load()">
 		<div id="highscore">Score: 0 - Best: 0</div>
 		<div id="words">
-			<p id="hint">Pick a difficulty</p>
-			<p id="guess">please</p>
+			<p id="hint">Hangman</p>
+			<p id="guess">_____</p>
 		</div>
 		<div id="remaining">7/7</div>
 		<div id="letters"></div>
 		<div id="screen">
 			<div id="screenStart">
-				<div onclick="startRound(1)">Easy<br>7 lives</div>
-				<div onclick="startRound(2)">Medium<br>6 lives</div>
-				<div onclick="startRound(3)">Hard<br>5 lives</div>
+				<div id="difficulties">
+					<div onclick="startRound(1)" class="startButton">Easy<br>7 lives</div>
+					<div onclick="startRound(2)" class="startButton">Medium<br>6 lives</div>
+					<div onclick="startRound(3)" class="startButton">Hard<br>5 lives</div>
+				</div>
+				<div id="leaderboardButton" onclick="displayLeaderboard()" class="startButton">View<br>Leaderboard</div>
+			</div>
+			<div id="screenLeaderboard">
+				<table>
+					<th colspan="2">
+						Hard Leaderboard
+					</th>
+					<tr>
+						<td>LOADING</td>
+						<td>...</td>
+					</tr>
+				</table>
+				<div onclick="removeLeaderboard()" class="startButton">Go<br>Back</div>
 			</div>
 		</div>
 	</body>
