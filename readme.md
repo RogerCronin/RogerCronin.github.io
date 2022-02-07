@@ -28,6 +28,6 @@ Crab Simulator is a text-based introspective dive into the human psyche using cr
 
 ## Hangman
 
-The [Cool Math Games hangman](https://www.coolmathgames.com/0-hangman) is very popular among Hangman aficionados. Unfortunately, the entire site's blocked by school admins. I made my own hangman using the same word list available to everyone on my website along with some sick additions like a leaderboard.
+The [Coolmath Games hangman](https://www.coolmathgames.com/0-hangman) is very popular among Hangman aficionados. Unfortunately, the entire site's blocked by school admins. I made my own hangman using the same word list available to everyone on my website along with some sick additions like a leaderboard.
 
 Cool yeah that's it. Thanks for checking this repository out.
