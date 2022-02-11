@@ -31,7 +31,7 @@ async function populateLeaderboard() {
 		let res = await fetch(apiURL + "getScores/")
 		let data = await res.json()
 		data = data.scores
-		leaderboardHigh = data[2][1]
+		leaderboardHigh = data[4][1]
 		updateLeaderboard(data)
 	} catch(e) {
 		console.log("Error in fetching leaderboard!")
@@ -106,7 +106,7 @@ async function leaderboardInput(e) {
 				let data = await res.json()
 				if(data.status == "fail") throw new Error("Failed name checks")
 				data = data.scores
-				leaderboardHigh = data[2][1]
+				leaderboardHigh = data[4][1]
 				updateLeaderboard(data)
 				hint = "Leaderboard updated!"
 				updateTexts()

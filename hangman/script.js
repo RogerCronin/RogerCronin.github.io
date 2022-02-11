@@ -190,7 +190,7 @@ async function die() {
 		await sleep(5)
 	}
 	await sleep(4000)
-	if(score > leaderboardHigh && useLeaderboard) {
+	if(maxLives == 5 && score > leaderboardHigh && useLeaderboard) {
 		handleLeaderboard()
 	}
 	return
@@ -199,6 +199,12 @@ async function die() {
 function updateTexts() {
 	hintDiv.innerHTML = hint
 	guessDiv.innerHTML = guessWord
+
+	if(guessWord) {
+		let longest = Math.max(guessWord.split(" ").map(i => i.length))
+		document.querySelector(":root").style.setProperty("--guessSize", `${100 / longest * 0.95}vw`)
+	}
+
 	remainingDiv.innerHTML = `${lives}/${maxLives}`
 	highscoreDiv.innerHTML = `Score: ${score} - Best: ${maxLives == 10 ? 0 : JSON.parse(localStorage.getItem("scores"))[maxLives == 7 ? "easy" : maxLives == 6 ? "medium" : "hard"]}`
 }
@@ -211,6 +217,10 @@ function resize() {
 let hintDiv, guessDiv, remainingDiv, lettersDiv, screenDiv, screenStartDiv, highscoreDiv, screenLeaderboard
 
 function load() {
+	new Image().src = "./assets/fireworks.png"
+	new Image().src = "./assets/explosion.png"
+	new Audio("./assets/fireworks.wav")
+	new Audio("./assets/explosion.wav")
 	if(!localStorage.getItem("scores")) localStorage.setItem("scores", JSON.stringify({ easy: 0, medium: 0, hard: 0 }))
 	hintDiv = document.getElementById("hint")
 	guessDiv = document.getElementById("guess")

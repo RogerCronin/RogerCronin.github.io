@@ -11,6 +11,7 @@
 	--gray: #CDCDCD;
 	--red: #DF2935;
 	--alert: #F34213;
+	--guessSize: 5vh;
 }
 
 body {
@@ -128,6 +129,10 @@ th {
 	#leaderboardButton {
 		margin-top: 1em;
 		width: min(500px, 80vw);
+	}
+
+	#guess {
+		font-size: min(var(--guessSize), 4.5em);
 	}
 }
 
