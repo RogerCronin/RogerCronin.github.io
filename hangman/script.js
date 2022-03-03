@@ -201,7 +201,7 @@ function updateTexts() {
 	guessDiv.innerHTML = guessWord
 
 	if(guessWord) {
-		let longest = Math.max(guessWord.split(" ").map(i => i.length))
+		let longest = Math.max(...guessWord.split(" ").map(i => i.length), 10)
 		document.querySelector(":root").style.setProperty("--guessSize", `${100 / longest * 0.95}vw`)
 	}
 

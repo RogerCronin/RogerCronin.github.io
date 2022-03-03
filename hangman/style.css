@@ -132,7 +132,7 @@ th {
 	}
 
 	#guess {
-		font-size: min(var(--guessSize), 4.5em);
+		font-size: min(var(--guessSize), 4em);
 	}
 }
 
