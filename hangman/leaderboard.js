@@ -186,7 +186,9 @@ const bannedNames = [
 	"VAJ",
 	"VJN",
 	"ORL",
-	"ANL"
+	"ANL",
+	"ASS",
+	"CUM"
 ]
 
 function nameCheck(name) {
