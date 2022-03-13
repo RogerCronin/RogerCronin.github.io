@@ -1,4 +1,4 @@
-let WORDS_LIST = `{
+window.WORDS_LIST = `{
   "words": [
     {
       "word": "sweet and sour chicken",

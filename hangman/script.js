@@ -9,7 +9,10 @@ let score = 0
 // 4 waiting for leaderboard
 let state = 0
 
+let wordIndex = 0
+
 WORDS_LIST = JSON.parse(WORDS_LIST).words
+window.runArray = []
 
 const letterSprites = {
 	p: [
@@ -62,6 +65,7 @@ async function startRound(difficulty) {
 	if(state != 0) return
 	score = 0
 	state = 1
+	runArray = []
 	screenDiv.addEventListener("transitionend", () => {
 		screenDiv.style.zIndex = -1
 	}, { once: true })
@@ -86,7 +90,8 @@ async function startRound(difficulty) {
 }
 
 function selectWord() {
-	let res = WORDS_LIST[Math.floor(Math.random() * WORDS_LIST.length)]
+	wordIndex = Math.floor(Math.random() * WORDS_LIST.length)
+	let res = WORDS_LIST[wordIndex]
 	hint = res.hint.toLowerCase()
 	word = res.word.toLowerCase()
 	guessWord = word.replace(/[a-z]/g, "_")
@@ -161,6 +166,7 @@ function resetLetters() {
 async function win() {
 	state = 2
 	score += lives
+	runArray.push(`${wordIndex};${Math.round(lives / maxLives * 10) / 10}`)
 	new Audio("./assets/fireworks.wav").play()
 	if(lives == maxLives) {
 		await spawnPerfect()
@@ -178,6 +184,8 @@ async function win() {
 async function die() {
 	state = 2
 	guessWord = word
+	runArray.push(`${wordIndex};0`)
+	sendRunData()
 	if(JSON.parse(localStorage.getItem("scores"))[maxLives == 7 ? "easy" : maxLives == 6 ? "medium" : "hard"] < score) {
 		let data = JSON.parse(localStorage.getItem("scores"))
 		data[maxLives == 7 ? "easy" : maxLives == 6 ? "medium" : "hard"] = score
