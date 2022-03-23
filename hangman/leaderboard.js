@@ -148,18 +148,6 @@ async function leaderboardInput(e) {
 	}
 }
 
-function sendRunData() {
-	fetch(apiURL + "submitRun/", {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json"
-		},
-		body: JSON.stringify({
-			runArray: window.runArray
-		})
-	})
-}
-
 const bannedNames = [
 	"PNS",
 	"FAG",
