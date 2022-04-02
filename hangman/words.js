@@ -7027,6 +7027,18 @@ window.WORDS_LIST = `{
     {
       "word": "Crab Simulator",
       "hint": "Video Games"
+    },
+    {
+      "word": "gooned up",
+      "hint": "Phrases"
+    },
+    {
+      "word": "commit to the bit",
+      "hint": "Phrases"
+    },
+    {
+      "word": "among us",
+      "hint": "Video Games"
     }
   ]
 }`
