@@ -10,3 +10,6 @@
 [submodule "gnomefighter"]
 	path = gnomefighter
 	url = https://github.com/RogerCronin/Gnome-Fighter
+[submodule "crabsimulator/CrabSimulator1.4"]
+	path = crabsimulator/CrabSimulator1.4
+	url = https://github.com/RogerCronin/Crab-Simulator-1.4
