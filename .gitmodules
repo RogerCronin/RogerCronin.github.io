@@ -7,3 +7,6 @@
 [submodule "hangman"]
 	path = hangman
 	url = https://github.com/RogerCronin/Hangman
+[submodule "gnomefighter"]
+	path = gnomefighter
+	url = https://github.com/RogerCronin/Gnome-Fighter
