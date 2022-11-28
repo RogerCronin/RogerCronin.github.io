@@ -1,3 +1,6 @@
 [submodule "twitchtetris"]
 	path = twitchtetris
 	url = https://github.com/RogerCronin/twitchtetris
+[submodule "russianroulette"]
+	path = russianroulette
+	url = https://github.com/RogerCronin/Russian-Roulette
