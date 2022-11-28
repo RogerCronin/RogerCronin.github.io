@@ -4,3 +4,6 @@
 [submodule "russianroulette"]
 	path = russianroulette
 	url = https://github.com/RogerCronin/Russian-Roulette
+[submodule "hangman"]
+	path = hangman
+	url = https://github.com/RogerCronin/Hangman
