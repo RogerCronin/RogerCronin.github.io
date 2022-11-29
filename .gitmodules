@@ -16,3 +16,6 @@
 [submodule "crabsimulator/CrabSimulatorTSA"]
 	path = crabsimulator/CrabSimulatorTSA
 	url = https://github.com/SaladTheGreat42/TSA-Crab-Simulator
+[submodule "playground"]
+	path = playground
+	url = https://github.com/RogerCronin/Squarebrackets-Playground
