@@ -6,10 +6,6 @@ I used to host it with AwardSpace on mixedlaughs.tk (free domain via dot.tk), bu
 
 Anyways you can poke around at some of my projects here.
 
-## JavaScript Message
-
-JavaScript Message is a shitty little in-school messaging platform intended to be an anonymous Discord-esque place. It originally used Google's Firebase as the main database, but the current version actually stores its messages via a Discord bot. Horrible, I know.
-
 ## Gnome Fighter+
 
 Gnome Fighter: Thanksgiving Edition was created my freshman year of high school on MIT App Inventor. For a while there was a terrible online port of it, but I recently rebuilt it from the ground up. Now it uses CSS and img tags. Ugh.
@@ -29,5 +25,9 @@ Crab Simulator is a text-based introspective dive into the human psyche using cr
 ## Hangman
 
 The [Coolmath Games hangman](https://www.coolmathgames.com/0-hangman) is very popular among Hangman aficionados. Unfortunately, the entire site's blocked by school admins. I made my own hangman using the same word list available to everyone on my website along with some sick additions like a leaderboard.
+
+## Playground
+
+I'll dump whatever projects I need uploaded to the web here. It's probably going to be a bunch of school projects. I don't think I'll link it anywhere on the main website, but maybe I'll get bored and do that.
 
 Cool yeah that's it. Thanks for checking this repository out.
