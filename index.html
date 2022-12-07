@@ -7,16 +7,26 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
 	<link rel="stylesheet" href="style.css">
 	<link rel="shortcut icon" type="image/png" href="/assets/favicon.png">
+	<script src="script.js"></script>
 </head>
 
 <body>
 
-	<div id="blanketDiv">
+	<div id="gameboy" src="assets/gameboy.png">
 		<div id="gameInfoDiv">
 			<h3 id="gameInfoTitle">Sicko Mode</h3>
 			<p id="gameInfoParagraph">This classic hit by Travis Scott is finally on SquareBrackets!</p>
-			<button id="launchButton">LAUNCH</button>
-			<button id="backButton" onclick="goBack()">GO BACK</button>
+		</div>
+		<button id="launchButton"></button>
+		<button id="backButton" onclick="goBack()"></button>
+	</div>
+
+	<div id="blanketDiv">
+		<div id="gameInfoDivDefault">
+			<h3 id="gameInfoTitleDefault">Sicko Mode</h3>
+			<p id="gameInfoParagraphDefault">This classic hit by Travis Scott is finally on SquareBrackets!</p>
+			<button id="launchButtonDefault">LAUNCH</button>
+			<button id="backButtonDefault" onclick="goBackDefault()">GO BACK</button>
 		</div>
 	</div>
 
@@ -30,51 +40,42 @@
 	<div id="gamesDiv">
 
 		<div class="gameWrapper">
-		<div class="game" onclick="clickGame('gnome')">
+		<div class="game" onclick="clickGame(this)">
 			<div>gnome</div>
 			<img src="assets/gnomeFighterPlus.png">
 		</div>
 		</div>
 
 		<div class="gameWrapper">
-		<div class="game" onclick="clickGame('tetris')">
+		<div class="game" onclick="clickGame(this)">
 			<div>tetris</div>
 			<img src="assets/twitchTetris.png">
 		</div>
 		</div>
 
 		<div class="gameWrapper">
-		<div class="game" onclick="clickGame('roulette')">
+		<div class="game" onclick="clickGame(this)">
 			<div>roulette</div>
 			<img src="assets/russianRoulette.png">
 		</div>
 		</div>
 
 		<div class="gameWrapper">
-		<div class="game" onclick="clickGame('crab web')">
+		<div class="game" onclick="clickGame(this)">
 			<div>crab sim</div>
 			<img src="assets/crabSimulatorWeb.png">
 		</div>
 		</div>
 
 		<div class="gameWrapper">
-		<div class="game" onclick="clickGame('crab py')">
+		<div class="game" onclick="clickGame(this)">
 			<div>crab py</div>
 			<img src="assets/crabSimulatorPy.png">
 		</div>
 		</div>
 
-		<!--
 		<div class="gameWrapper">
-		<div class="game" onclick="clickGame('crab tsa')">
-			<div>crab tsa</div>
-			<img src="assets/crabSimulatorTSA.png">
-		</div>
-		</div>
-		-->
-
-		<div class="gameWrapper">
-		<div class="game" onclick="clickGame('hangman')">
+		<div class="game" onclick="clickGame(this)">
 			<div>hangman</div>
 			<img src="assets/hangman.png">
 		</div>
@@ -109,95 +110,5 @@
 
 
 </body>
-
-<script>
-
-const id = iden => document.getElementById(iden)
-const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-
-function updateGameInfo(title, paragraph, link, mobile = false, button = "LAUNCH") {
-	id("gameInfoTitle").innerHTML = title
-	id("gameInfoParagraph").innerHTML = paragraph
-	if(isMobile && !mobile) id("gameInfoParagraph").innerHTML += "<br><span class='darkred'>* Mobile incompatible</span>"
-	id("launchButton").onclick = () => location.href = `/${link}`
-	id("launchButton").innerHTML = button
-}
-
-function clickGame(game) {
-
-	switch(game) {
-		case "jsm":
-			updateGameInfo(
-				"JavaScript Message v4.0",
-				"The fourth iteration of JavaScript Message, a social platform intended for in-school use.",
-				"javascriptmessage",
-				true
-			)
-			break
-		case "gnome":
-			updateGameInfo(
-				"Gnome Fighter+",
-				"A riveting button-mashing fighting game staring Gnome and Anti-Gnome, completely remade with bonus content!",
-				"gnomefighter/plus",
-				true
-			)
-			break
-		case "tetris":
-			updateGameInfo(
-				"Twitch Tetris v2.1",
-				"Twitch Tetris, ported to SquareBrackets with a few quality-of-life improvements. Not affiliated with Twitch.",
-				"twitchtetris"
-			)
-			break
-		case "roulette":
-			updateGameInfo(
-				"Russian Roulette",
-				"The classic party game you know and love, but the \"bullet\" is hearing loss. Earbuds required!",
-				"russianroulette",
-				true
-			)
-			break
-		case "crab web":
-			updateGameInfo(
-				"Crab Simulator v1.4 (web)",
-				"Crab Simulator, ported to the internet for easy access.",
-				"crabsimulator/CrabSimulator1.4"
-			)
-			break
-		case "crab py":
-			updateGameInfo(
-				"Crab Simulator v1.3 (download)",
-				"A download link for Crab Simulator, originally developed on Python 3, then ported to Windows devices.",
-				"crabsimulator/CrabSimulator1.3.zip",
-				false,
-				"DOWNLOAD"
-			)
-			break
-		case "crab tsa":
-			updateGameInfo(
-				"Crab Simulator TSA",
-				"A PG, adventure spinoff of Crab Simulator made for a national competition.",
-				"crabsimulator/CrabSimulatorTSA/src"
-			)
-			break
-		case "hangman":
-			updateGameInfo(
-				"Hangman",
-				"A swanky hangman player without the scary implications of what \"hangman\" actually represents.",
-				"hangman",
-				true
-			)
-	}
-
-	id("blanketDiv").classList.add("active")
-	id("blanketDiv").style.zIndex = 1
-}
-
-function goBack() {
-	id("blanketDiv").classList.remove("active")
-	setTimeout(() => id("blanketDiv").style.zIndex = -1, 500) // move to back after css transition
-}
-
-</script>
 
 </html>
