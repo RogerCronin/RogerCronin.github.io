@@ -30,8 +30,8 @@ h3 {
 	text-align: center;
 }
 
-p, li, a {
-  font-family: "Open Sans", sans-serif;
+p, li {
+	font-family: "Open Sans", sans-serif;
 	font-size: 1.25em;
 }
 
@@ -80,12 +80,134 @@ body {
 	color: var(--blue);
 }
 
+#personalDivWrapper {
+	width: 100%;
+}
+
+#personalDiv {
+	padding: 0 1.5em 2em 2em;
+	margin: 0 10vw 2em 10vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#personalDiv > h2 {
+	margin: 1em 0 0 0;
+}
+
+#personalDiv > p {
+	margin: 1em 0 2em 0;
+}
+
+#personalDiv > div > img {
+	max-width: 329px;
+	border-radius: 2em;
+}
+
+#personalDiv > div {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 1em;
+}
+
+#personalDiv > div > div {
+	height: auto;
+	min-width: 329px;
+	min-height: 329px;
+	color: var(--white);
+	border-radius: 2em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+#funFacts {
+	cursor: pointer;
+	background-color: var(--blue);
+	width: 329px;
+}
+
+#funFactsText {
+	position: relative;
+	bottom: -25px;
+	opacity: 0;
+	transition: bottom ease 0.25s, opacity ease 0.25s;
+	margin: 1em;
+}
+
+#funFactsText.active {
+	bottom: 0;
+	opacity: 1;
+}
+
+#recentTracks {
+	background-color: var(--purple);
+}
+
+#recentTracks > p {
+	margin: 1em 0 0 0;
+}
+
+#recentTrackWrapper {
+	display: flex;
+	flex-direction: column;
+	margin: 1em;
+	gap: 0.5em;
+}
+
+#recentTrackWrapper > div {
+	display: flex;
+	flex-direction: row;
+	justify-content: left;
+	align-items: center;
+	gap: 1em;
+}
+
+#recentTrackWrapper > div > p {
+	margin: 0;
+	text-align: left;
+}
+
+#recentTrackWrapper > div > img {
+	border-radius: 0;
+	width: 64px;
+	height: 64px;
+	border-radius: 0.5em;
+}
+
+p .nowListening {
+	color: var(--gray);
+}
+
+p .nowListening:after {
+	overflow: hidden;
+	display: inline-block;
+	vertical-align: bottom;
+	animation: ellipsis steps(4, end) 3s infinite;
+	content: "\2026";
+	width: 0px;
+}
+
+@keyframes ellipsis {
+	to {
+		width: 1em;
+	}
+}
+
 #infoDiv {
 	padding: 0 1.5em 2em 2em;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	background-color: var(--blue);
+	color: var(--white);
 }
 
 #footerDiv {

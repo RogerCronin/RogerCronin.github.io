@@ -19,7 +19,7 @@ const gameInfoObject = {
 	],
 	"roulette": [
 		"Russian Roulette",
-		"The classic party game you know and love, but the \"bullet\" is hearing loss. Earbuds required!",
+		"The classic party game you know and love, but the \"bullet\" is hearing loss. Take turns passing the earbuds and firing!",
 		"russianroulette",
 		true
 	],
@@ -38,7 +38,7 @@ const gameInfoObject = {
 	],
 	"hangman": [
 		"Hangman",
-		"A swanky hangman player without the scary implications of what \"hangman\" actually represents.",
+		"A swanky hangman player without the scary implications of what the \"hangman\" actually represents.",
 		"hangman",
 		true
 	]
@@ -147,3 +147,78 @@ function calcUsesGameboy() {
 window.addEventListener("resize", () => {
 	usesGameboy = calcUsesGameboy()
 })
+
+function funFact() {
+	const textElement = id("funFactsText")
+
+	if(!textElement.classList.contains("active")) return
+
+	textElement.classList.remove("active")
+	textElement.addEventListener("transitionend", () => {
+		let randomFact = getRandomFunFact()
+		while(randomFact == textElement.innerHTML) {
+			randomFact = getRandomFunFact()
+		}
+		textElement.innerHTML = randomFact
+		textElement.classList.add("active")
+	}, { once: true })
+}
+
+let funFactsList = [
+	"Roger was raised by wolves until the age of 6",
+	"King Gizzard and the Lizard Wizard is Roger's favorite band",
+	"Roger can speak over 300 languages including English, Polish, and JavaScript",
+	"Roger is a lot cooler than you are",
+	"R is the first letter in Roger's name",
+	"Roger's last name is Cronin",
+	"Roger thinks you should listen to <a href='https://open.spotify.com/track/0o6rOggbaLEvtwUHNztuD2?si=1db9cb80e7f64cdb' target='_blank'>The Dripping Tap</a> on Spotify",
+	"R is the last letter in Roger's name",
+	"Washington, D.C. is the capital of the United States of America",
+	"The borzoi is Roger's favorite breed of dog",
+	"Crabs are nice animals, but not as nice as you are :)",
+	"Roger goes to the gym but he really doesn't want to",
+	"What if we spelled jeans like genes wouldn't that be fucked up?",
+	"Roger isn't real, he's actually a figment of your imagination",
+	"Roger was involved in a hit and run in 1989 and the police haven't caught him yet",
+	"Roger loves to put himself in high risk low reward situations",
+	"Roger's self-destructive habits haven't caught up to him yet",
+	"With your help, Roger can be stopped",
+	"My Venmo is @roger_cronin",
+	"Chocolate ice cream is better than vanilla, it's no contest like who would genuinely say vanilla over chocolate?",
+	"Roger has three brothers, all also named Roger",
+	"The best time to plant a tree was 20 years ago",
+	"Ow! Stop clicking me!",
+	"Roger hopes to one day own a Honda Civic",
+	"Roger's first job was working the coal mines like his father and his father before him"
+]
+
+fetch("https://ipapi.co/json/")
+	.then(res => res.json())
+	.then(json => {
+		if(!json || !json.ip || !json.city || !json.region) return
+		funFactsList.push(`Your IP address is ${json.ip} and you live in ${json.city}, ${json.region}`)
+	})
+
+fetch("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=brackets_square&api_key=73e9eebfe28feba67f29a13f1ecc85db&format=json")
+	.then(res => res.json())
+	.then(async json => {
+		if(!json || !json.recenttracks || !json.recenttracks.track) return
+		id("recentTrackWrapper").innerHTML = ""
+		const tracks = json.recenttracks.track
+		for(let i = 0; i < 3; i++) {
+			let track = tracks[i]
+			const div = document.createElement("div")
+			const img = document.createElement("img")
+			img.src = track.image[1]["#text"]
+			const p = document.createElement("p")
+			p.innerHTML = `<a href='${track.url}' target='_blank'>${track.name} - ${track.artist["#text"]}</a>`
+			if(!track.date) p.innerHTML += "<br><span class='nowListening'>Now listening</span>"
+			div.appendChild(img)
+			div.appendChild(p)
+			id("recentTrackWrapper").appendChild(div)
+		}
+	})
+
+function getRandomFunFact() {
+	return funFactsList[Math.floor(Math.random() * funFactsList.length)]
+}
