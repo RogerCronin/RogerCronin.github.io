@@ -183,7 +183,7 @@ let funFactsList = [
 	"Roger loves to put himself in high risk low reward situations",
 	"Roger's self-destructive habits haven't caught up to him yet",
 	"With your help, Roger can be stopped",
-	"My Venmo is @roger_cronin",
+	"Roger's Venmo is @roger_cronin",
 	"Chocolate ice cream is better than vanilla, it's no contest like who would genuinely say vanilla over chocolate?",
 	"Roger has three brothers, all also named Roger",
 	"The best time to plant a tree was 20 years ago",
