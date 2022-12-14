@@ -199,7 +199,7 @@ fetch("https://ipapi.co/json/")
 		funFactsList.push(`Your IP address is ${json.ip} and you live in ${json.city}, ${json.region}`)
 	})
 
-fetch("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=brackets_square&api_key=73e9eebfe28feba67f29a13f1ecc85db&format=json")
+fetch("https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=brackets_square&api_key=73e9eebfe28feba67f29a13f1ecc85db&format=json")
 	.then(res => res.json())
 	.then(async json => {
 		if(!json || !json.recenttracks || !json.recenttracks.track) return
