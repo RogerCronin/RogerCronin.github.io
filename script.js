@@ -189,13 +189,15 @@ let funFactsList = [
 	"The best time to plant a tree was 20 years ago",
 	"Ow! Stop clicking me!",
 	"Roger hopes to one day own a Honda Civic",
-	"Roger's first job was working the coal mines like his father and his father before him"
+	"Roger's first job was working the coal mines like his father and his father before him",
+	"Wesley got a kidney stone on 9/11 lol",
+	"Fool me once, shame on you"
 ]
 
 fetch("https://ipapi.co/json/")
 	.then(res => res.json())
 	.then(json => {
-		if(!json || !json.ip || !json.city || !json.region) return
+		if(!json || !json.ip || !json.city || !json.region || json.ip.contains(":")) return
 		funFactsList.push(`Your IP address is ${json.ip} and you live in ${json.city}, ${json.region}`)
 	})
 
