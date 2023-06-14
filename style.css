@@ -131,6 +131,7 @@ body {
 	cursor: pointer;
 	background-color: var(--blue);
 	width: 329px;
+	overflow-wrap: anywhere;
 }
 
 #funFactsText {

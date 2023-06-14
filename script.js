@@ -183,19 +183,21 @@ let funFactsList = [
 	"Roger loves to put himself in high risk low reward situations",
 	"Roger's self-destructive habits haven't caught up to him yet",
 	"With your help, Roger can be stopped",
-	"My Venmo is @roger_cronin",
+	"Roger's Venmo is @roger_cronin",
 	"Chocolate ice cream is better than vanilla, it's no contest like who would genuinely say vanilla over chocolate?",
 	"Roger has three brothers, all also named Roger",
 	"The best time to plant a tree was 20 years ago",
 	"Ow! Stop clicking me!",
 	"Roger hopes to one day own a Honda Civic",
-	"Roger's first job was working the coal mines like his father and his father before him"
+	"Roger's first job was working the coal mines like his father and his father before him",
+	"Wesley got a kidney stone on 9/11 lol",
+	"Fool me once, shame on you"
 ]
 
 fetch("https://ipapi.co/json/")
 	.then(res => res.json())
 	.then(json => {
-		if(!json || !json.ip || !json.city || !json.region) return
+		if(!json || !json.ip || !json.city || !json.region || json.ip.contains(":")) return
 		funFactsList.push(`Your IP address is ${json.ip} and you live in ${json.city}, ${json.region}`)
 	})
 
