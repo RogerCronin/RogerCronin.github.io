@@ -41,6 +41,12 @@ const gameInfoObject = {
 		"A swanky hangman player without the scary implications of what the \"hangman\" actually represents.",
 		"hangman",
 		true
+	],
+	"goonz": [
+		"Goonz House",
+		"Smart, witty humor for the refined miscreant. Checkout out our website!",
+		"goonzhouse",
+		true
 	]
 }
 
@@ -201,6 +207,10 @@ fetch("https://ipapi.co/json/")
 		funFactsList.push(`Your IP address is ${json.ip} and you live in ${json.city}, ${json.region}`)
 	})
 
+function getRandomFunFact() {
+	return funFactsList[Math.floor(Math.random() * funFactsList.length)]
+}
+
 fetch("https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=brackets_square&api_key=73e9eebfe28feba67f29a13f1ecc85db&format=json")
 	.then(res => res.json())
 	.then(async json => {
@@ -220,7 +230,3 @@ fetch("https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=brack
 			id("recentTrackWrapper").appendChild(div)
 		}
 	})
-
-function getRandomFunFact() {
-	return funFactsList[Math.floor(Math.random() * funFactsList.length)]
-}
