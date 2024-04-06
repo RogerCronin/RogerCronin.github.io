@@ -212,7 +212,6 @@ let funFactsList = [
 fetch("https://ipapi.co/json/")
 	.then(res => res.json())
 	.then(json => {
-		console.log(json)
 		if(!json || !json.ip || !json.city || !json.region || !json.ip.includes(":")) return
 		funFactsList.push(`You ever visit ${json.city}, ${json.region} before?`)
 	})
