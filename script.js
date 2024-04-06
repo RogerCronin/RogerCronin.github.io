@@ -1,3 +1,5 @@
+// oh my god this code is so ugly I wrote it like a million years ago ugh
+
 const id = iden => document.getElementById(iden)
 let clientIsMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 
@@ -82,7 +84,7 @@ function clickGame(game) {
 	game.classList.add("active")
 	id("gameboy").style.bottom = "10px"
 	game.style.zIndex = 1
-	setTimeout(() => {
+	setTimeout(() => { // whyyyyy just use CSS animations or something, was I stupid???
 		game.style.transition = null
 		game.style.left = null
 		game.style.top = `${window.innerHeight - 850}px`
@@ -154,7 +156,7 @@ window.addEventListener("resize", () => {
 	usesGameboy = calcUsesGameboy()
 })
 
-function funFact() {
+function funFact() { // WHAT IS THIS CODE????? WHY DID I WRITE IT LIKE THIS??????
 	const textElement = id("funFactsText")
 
 	if(!textElement.classList.contains("active")) return
@@ -171,20 +173,21 @@ function funFact() {
 }
 
 let funFactsList = [
-	"Roger was raised by wolves until the age of 6",
+	"Roger was raised by wolves",
 	"King Gizzard and the Lizard Wizard is Roger's favorite band",
-	"Roger can speak over 300 languages including English, Polish, and JavaScript",
+	"Roger can speak over 300 languages",
 	"Roger is a lot cooler than you are",
 	"R is the first letter in Roger's name",
 	"Roger's last name is Cronin",
+	"Roger's first name is Roger",
 	"Roger thinks you should listen to <a href='https://open.spotify.com/track/0o6rOggbaLEvtwUHNztuD2?si=1db9cb80e7f64cdb' target='_blank'>The Dripping Tap</a> on Spotify",
 	"R is the last letter in Roger's name",
 	"Washington, D.C. is the capital of the United States of America",
 	"The borzoi is Roger's favorite breed of dog",
-	"Crabs are nice animals, but not as nice as you are :)",
+	"Crabs are cool animals, but not as cool as you are",
 	"Roger goes to the gym but he really doesn't want to",
-	"What if we spelled jeans like genes wouldn't that be fucked up?",
-	"Roger isn't real, he's actually a figment of your imagination",
+	"What if we spelled jeans like genes wouldn't that be fucked up",
+	"Roger is a figment of your imagination",
 	"Roger was involved in a hit and run in 1989 and the police haven't caught him yet",
 	"Roger loves to put himself in high risk low reward situations",
 	"Roger's self-destructive habits haven't caught up to him yet",
@@ -195,16 +198,23 @@ let funFactsList = [
 	"The best time to plant a tree was 20 years ago",
 	"Ow! Stop clicking me!",
 	"Roger hopes to one day own a Honda Civic",
-	"Roger's first job was working the coal mines like his father and his father before him",
+	"Roger thinks you should bike to work",
+	"Roger worked in the coal mines like his father and his father before him",
 	"Wesley got a kidney stone on 9/11 lol",
-	"Fool me once, shame on you"
+	"Fool me once, shame on you",
+	"Idiot! Activate 3 Day Hex of Blinding!",
+	"It's so over for Roger",
+	"Roger doesn't deserve the good in his life",
+	"Bradford pear trees are considered invasive species in many places",
+	"Help! I'm stuck in a fun facts roulette button!"
 ]
 
 fetch("https://ipapi.co/json/")
 	.then(res => res.json())
 	.then(json => {
-		if(!json || !json.ip || !json.city || !json.region || json.ip.contains(":")) return
-		funFactsList.push(`Your IP address is ${json.ip} and you live in ${json.city}, ${json.region}`)
+		console.log(json)
+		if(!json || !json.ip || !json.city || !json.region || !json.ip.includes(":")) return
+		funFactsList.push(`You ever visit ${json.city}, ${json.region} before?`)
 	})
 
 function getRandomFunFact() {
