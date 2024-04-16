@@ -49,6 +49,12 @@ const gameInfoObject = {
 		"Smart, witty humor for the refined miscreant. Checkout out our website!",
 		"goonzhouse",
 		true
+	],
+	"mine": [
+		"Minesweeper",
+		"Sweep this vast minefield to uncover hidden bombs! Or die trying...",
+		"minesweeper",
+		false
 	]
 }
 
