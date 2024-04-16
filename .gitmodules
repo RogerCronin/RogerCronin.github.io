@@ -16,6 +16,6 @@
 [submodule "playground"]
 	path = playground
 	url = https://github.com/RogerCronin/Squarebrackets-Playground
-[submodule "minesweeper"]
-	path = minesweeper
+[submodule "aminesweeper"]
+	path = aminesweeper
 	url = https://github.com/RogerCronin/Minesweeper.git
